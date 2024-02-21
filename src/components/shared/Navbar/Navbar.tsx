@@ -1,34 +1,32 @@
-'use client';
-
 import Link from 'next/link';
-import PrimaryBtn from '../Buttons/PrimaryBtn';
 import { FaPhoneAlt } from 'react-icons/fa';
 import { MdStorefront, MdWorkOutline, MdOutlineMessage } from 'react-icons/md';
 import { GoHome } from 'react-icons/go';
 import { GrArticle } from 'react-icons/gr';
 import { SlBookOpen } from 'react-icons/sl';
+import Button from '../Buttons/Button';
 const NavbarComponent = () => {
   return (
-    <div className="">
+    <div className="sticky top-0 ">
       <nav className="bg-white border-gray-200 dark:bg-gray-900">
         <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl p-4">
           <Link href="https://markals.in" className="flex items-center space-x-3 rtl:space-x-reverse">
-            <img src="/logo.png" className="h-8" alt="Flowbite Logo" />
+            <img src="/logo.png" className="h-8" alt="Mobile Ki Dukan Logo" />
             <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white hidden">
               Mobile Ki Dukan
             </span>
           </Link>
-          <div className="flex items-center space-x-6 rtl:space-x-reverse">
+          <div className="flex items-center space-x-6 ">
             <Link
               href="tel:+919462551308"
               className="text-base  text-gray-800 dark:text-white hover:underline flex gap-3 items-center"
             >
               <FaPhoneAlt />
 
-              <p>(+91) 94625-51308</p>
+              <p>(+91) 94625-51308 </p>
             </Link>
             <Link href="/">
-              <PrimaryBtn color="primary">Register Your Business</PrimaryBtn>
+              <Button className="btn-primary">Register Your Business</Button>
             </Link>
           </div>
         </div>

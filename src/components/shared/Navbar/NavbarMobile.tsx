@@ -1,7 +1,6 @@
 'use client';
-
 import Link from 'next/link';
-import PrimaryBtn from '../Buttons/PrimaryBtn';
+import PrimaryBtn from '../Buttons/Button';
 import { FaPhoneAlt } from 'react-icons/fa';
 import { MdStorefront, MdWorkOutline, MdOutlineMessage } from 'react-icons/md';
 import { GoHome } from 'react-icons/go';
@@ -9,6 +8,7 @@ import { GrArticle } from 'react-icons/gr';
 import { SlBookOpen } from 'react-icons/sl';
 import { IoReorderThreeOutline } from 'react-icons/io5';
 import { useState } from 'react';
+import Button from '../Buttons/Button';
 const NavbarMobileComponent = () => {
   const [toggle, setToggle] = useState(false);
   const handleToggle = () => {};
@@ -33,7 +33,7 @@ const NavbarMobileComponent = () => {
             </Link>
 
             <Link href="/" className="hidden md:visible">
-              <PrimaryBtn color="primary">Register Your Business</PrimaryBtn>
+              <Button className="btn-primary">Register Your Business</Button>
             </Link>
 
             <button

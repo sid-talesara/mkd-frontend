@@ -1,6 +1,9 @@
 import type { Metadata } from 'next';
 import { Work_Sans } from 'next/font/google'; // Import Work Sans font
 import './globals.css';
+import NavbarComponent from '@/components/shared/Navbar/Navbar';
+import NavbarMobileComponent from '@/components/shared/Navbar/NavbarMobile';
+import Footer from '@/components/shared/Footer/Footer';
 
 const workSans = Work_Sans({ subsets: ['latin'] });
 
@@ -16,7 +19,18 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={workSans.className}>{children}</body> {/* Use Work Sans font */}
+      <body className={workSans.className}>
+        <div className="hidden lg:block">
+          <NavbarComponent />
+        </div>
+        <div className=" block lg:hidden">
+          <NavbarMobileComponent />
+        </div>
+
+        {children}
+        <Footer />
+      </body>{' '}
+      {/* Use Work Sans font */}
     </html>
   );
 }
