@@ -7,7 +7,7 @@ const FeaturesSection = ({ type }: { type: string }) => {
     <div>
       {' '}
       <div
-        className={`flex flex-col items-center justify-center gap-5 py-8 px-5 ${type === 'dark' ? 'bg-mkd-dark' : ''}`}
+        className={`flex flex-col items-center justify-center gap-5  px-5 ${type === 'dark' ? 'bg-mkd-dark py-8' : ''}`}
       >
         <h3 className={`text-4xl font-light  ${type === 'dark' ? 'text-mkd-light' : ''}`}>
           {/* MOBILE KI DUKAN? */}
