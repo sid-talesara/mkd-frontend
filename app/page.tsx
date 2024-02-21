@@ -4,7 +4,7 @@ import ShopCard from '@/components/shared/Cards/ShopCard';
 import FAQPage from '@/components/shared/FAQ/Faq';
 import FeaturesSection from '@/components/Home/FeaturesSection';
 import Testimonial from '@/components/shared/Testimonial/Testimonial';
-import Homepage from './(website)/Homepage';
+import Homepage from './(website)/Home/Homepage';
 
 export default function Home() {
   return (

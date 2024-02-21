@@ -5,7 +5,7 @@ import React from 'react';
 const MediaRecognition = ({ type }: { type: string }) => {
   return (
     // <div className="flex justify-center ">
-    <div className="bg-white w-full max-w-screen-xl px-10 py-5 rounded-lg h-auto lg:h-40 flex flex-wrap justify-evenly items-center">
+    <div className="bg-white w-full shadow-lg max-w-screen-xl px-10 py-5 rounded-lg h-auto lg:h-40 flex flex-wrap justify-evenly items-center">
       {/* brand logo */}
       {type === 'media'
         ? mediaRecognition.map((media) => (

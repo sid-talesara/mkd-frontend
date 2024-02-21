@@ -3,11 +3,13 @@ import MediaRecognition from '../shared/MediaRecognition/MediaRecognition';
 import Image from 'next/image';
 import Button from '../shared/Buttons/Button';
 
-type Props = {};
-
-const AboutSection = (props: Props) => {
+const AboutSection = ({ type }: { type: string }) => {
   return (
-    <div className="bg-mkd-dark text-mkd-light flex justify-center">
+    <div
+      className={` flex justify-center ${
+        type === 'dark' ? 'bg-mkd-dark text-mkd-light' : 'bg-mkd-light text-mkd-dark'
+      }`}
+    >
       <div className="max-w-screen-xl  w-full py-10">
         {/* info */}
         <div className="flex flex-col lg:flex-row w-full ">

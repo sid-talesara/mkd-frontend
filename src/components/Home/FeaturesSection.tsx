@@ -2,14 +2,14 @@ import React from 'react';
 import FeatureCard from '../shared/Cards/FeatureCard';
 import { ShopCardDummyData } from '@/shared/data';
 
-type Props = {};
-
-const FeaturesSection = (props: Props) => {
+const FeaturesSection = ({ type }: { type: string }) => {
   return (
     <div>
       {' '}
-      <div className="flex flex-col items-center justify-center gap-5 py-8 px-5">
-        <h3 className="text-4xl font-light ">
+      <div
+        className={`flex flex-col items-center justify-center gap-5 py-8 px-5 ${type === 'dark' ? 'bg-mkd-dark' : ''}`}
+      >
+        <h3 className={`text-4xl font-light  ${type === 'dark' ? 'text-mkd-light' : ''}`}>
           {/* MOBILE KI DUKAN? */}
           WHY
           <span className="font-bold"> MOBILE KI DUKAN? </span>
