@@ -10,8 +10,8 @@ const NavbarComponent = () => {
     <div className="sticky top-0 ">
       <nav className="bg-white border-gray-200 dark:bg-gray-900">
         <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl p-4">
-          <Link href="https://markals.in" className="flex items-center space-x-3 rtl:space-x-reverse">
-            <img src="/logo.png" className="h-8" alt="Mobile Ki Dukan Logo" />
+          <Link href="/" className="flex items-center space-x-3 rtl:space-x-reverse">
+            <img src="/mkd-logo-dark.png" className="h-8" alt="Mobile Ki Dukan Logo" />
             <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white hidden">
               Mobile Ki Dukan
             </span>
@@ -36,42 +36,48 @@ const NavbarComponent = () => {
           <div className="flex items-center  ">
             <ul className="flex flex-row font-normal w-full justify-between mt-0 space-x-8 rtl:space-x-reverse text-base">
               <li>
-                <Link href="#" className="text-base   dark:text-white hover:underline flex gap-3 items-center">
+                <Link href="/" className="text-base   dark:text-white hover:underline flex gap-3 items-center">
                   <GoHome className="text-lg" />
 
                   <p>Home</p>
                 </Link>
               </li>
               <li>
-                <Link href="#" className="text-base   dark:text-white hover:underline flex gap-3 items-center">
+                <Link href="/about" className="text-base   dark:text-white hover:underline flex gap-3 items-center">
                   <SlBookOpen className="text-lg" />
 
                   <p>About Us</p>
                 </Link>
               </li>
               <li>
-                <Link href="#" className="text-base   dark:text-white hover:underline flex gap-3 items-center">
+                <Link
+                  href="/register-your-business"
+                  className="text-base   dark:text-white hover:underline flex gap-3 items-center"
+                >
                   <MdWorkOutline className="text-lg" />
 
                   <p>Services</p>
                 </Link>
               </li>
               <li>
-                <Link href="#" className="text-base   dark:text-white hover:underline flex gap-3 items-center">
+                <Link
+                  href="/nearby-stores"
+                  className="text-base   dark:text-white hover:underline flex gap-3 items-center"
+                >
                   <MdStorefront className="text-lg" />
 
                   <p>Nearby Stores</p>
                 </Link>
               </li>
               <li>
-                <Link href="#" className="text-base   dark:text-white hover:underline flex gap-3 items-center">
+                <Link href="/blog" className="text-base   dark:text-white hover:underline flex gap-3 items-center">
                   <GrArticle className="text-lg" />
 
                   <p>Blogs</p>
                 </Link>
               </li>
               <li>
-                <Link href="#" className="text-base   dark:text-white hover:underline flex gap-3 items-center">
+                <Link href="/contact" className="text-base   dark:text-white hover:underline flex gap-3 items-center">
                   <MdOutlineMessage className="text-lg" />
 
                   <p>Contact</p>

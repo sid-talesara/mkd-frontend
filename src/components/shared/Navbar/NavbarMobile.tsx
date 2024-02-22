@@ -13,11 +13,11 @@ const NavbarMobileComponent = () => {
   const [toggle, setToggle] = useState(false);
   const handleToggle = () => {};
   return (
-    <div className="sticky top-0">
+    <div className="sticky top-0 z-50">
       <nav className="bg-white border-gray-200 dark:bg-gray-900 shadow-md">
         <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl p-4">
-          <Link href="https://markals.in" className="flex items-center space-x-3 rtl:space-x-reverse">
-            <img src="/logo.png" className="h-5 md:h-8" alt="Flowbite Logo" />
+          <Link href="/" className="flex items-center space-x-3 rtl:space-x-reverse">
+            <img src="/mkd-logo-dark.png" className="h-5 md:h-8" alt="mobile ki dukan logo" />
             <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white hidden">
               Mobile Ki Dukan
             </span>
@@ -54,7 +54,7 @@ const NavbarMobileComponent = () => {
               <ul className="flex flex-col font-normal w-full justify-between mt-0 gap-4 rtl:space-x-reverse text-base uppercase ">
                 <li>
                   <Link
-                    href="#"
+                    href="/"
                     className="  dark:text-white hover:underline flex gap-5 items-center hover:bg-mkd-light hover:text-mkd-dark p-2 rounded-md"
                   >
                     <GoHome className="text-lg" />
@@ -64,7 +64,7 @@ const NavbarMobileComponent = () => {
                 </li>
                 <li>
                   <Link
-                    href="#"
+                    href="/about"
                     className="  dark:text-white hover:underline flex gap-5 items-center  hover:bg-mkd-light hover:text-mkd-dark p-2 rounded-md"
                   >
                     <SlBookOpen className="text-lg" />
@@ -74,7 +74,7 @@ const NavbarMobileComponent = () => {
                 </li>
                 <li>
                   <Link
-                    href="#"
+                    href="/register-your-business"
                     className="  dark:text-white hover:underline flex gap-5 items-center  hover:bg-mkd-light hover:text-mkd-dark p-2 rounded-md"
                   >
                     <MdWorkOutline className="text-lg" />
@@ -84,7 +84,7 @@ const NavbarMobileComponent = () => {
                 </li>
                 <li>
                   <Link
-                    href="#"
+                    href="/nearby-stores"
                     className="  dark:text-white hover:underline flex gap-5 items-center  hover:bg-mkd-light hover:text-mkd-dark p-2 rounded-md"
                   >
                     <MdStorefront className="text-lg" />
@@ -94,7 +94,7 @@ const NavbarMobileComponent = () => {
                 </li>
                 <li>
                   <Link
-                    href="#"
+                    href="/blogs"
                     className="  dark:text-white hover:underline flex gap-5 items-center  hover:bg-mkd-light hover:text-mkd-dark p-2 rounded-md"
                   >
                     <GrArticle className="text-lg" />
@@ -104,7 +104,7 @@ const NavbarMobileComponent = () => {
                 </li>
                 <li>
                   <Link
-                    href="#"
+                    href="/contact"
                     className="  dark:text-white hover:underline flex gap-5 items-center  hover:bg-mkd-light hover:text-mkd-dark p-2 rounded-md"
                   >
                     <MdOutlineMessage className="text-lg" />
