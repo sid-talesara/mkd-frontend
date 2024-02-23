@@ -188,3 +188,26 @@ export const brandsRecognition = [
     altText: 'iStart-logo',
   },
 ];
+
+export const markersLocation = [
+  { id: 1, name: 'Location 1', position: { lat: 26.9263, lng: 75.7398 } },
+  { id: 2, name: 'Location 2', position: { lat: 26.8899, lng: 75.7596 } },
+  { id: 3, name: 'Location 3', position: { lat: 26.936, lng: 75.8049 } },
+  { id: 4, name: 'Location 4', position: { lat: 26.9516, lng: 75.746 } },
+  { id: 5, name: 'Location 5', position: { lat: 26.9046, lng: 75.7402 } },
+  { id: 6, name: 'Location 6', position: { lat: 26.8842, lng: 75.7878 } },
+  { id: 7, name: 'Location 7', position: { lat: 26.865, lng: 75.7571 } },
+  { id: 8, name: 'Location 8', position: { lat: 26.9273, lng: 75.7917 } },
+  { id: 9, name: 'Location 9', position: { lat: 26.8844, lng: 75.7962 } },
+  { id: 10, name: 'Location 10', position: { lat: 26.9433, lng: 75.7379 } },
+  { id: 11, name: 'Location 11', position: { lat: 26.943, lng: 75.8071 } },
+  { id: 12, name: 'Location 12', position: { lat: 26.8964, lng: 75.7528 } },
+  { id: 13, name: 'Location 13', position: { lat: 26.9581, lng: 75.771 } },
+  { id: 14, name: 'Location 14', position: { lat: 26.8716, lng: 75.747 } },
+  { id: 15, name: 'Location 15', position: { lat: 26.9471, lng: 75.7976 } },
+  { id: 16, name: 'Location 16', position: { lat: 26.9431, lng: 75.8102 } },
+  { id: 17, name: 'Location 17', position: { lat: 26.916, lng: 75.8346 } },
+  { id: 18, name: 'Location 18', position: { lat: 26.9002, lng: 75.7925 } },
+  { id: 19, name: 'Location 19', position: { lat: 26.9453, lng: 75.7991 } },
+  { id: 20, name: 'Location 20', position: { lat: 26.9485, lng: 75.795 } },
+];
