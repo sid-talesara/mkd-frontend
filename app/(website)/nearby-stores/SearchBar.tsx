@@ -1,7 +1,11 @@
-import React from 'react';
+import React, { ChangeEventHandler } from 'react';
 import { FaSearch } from 'react-icons/fa';
-type Props = {};
-const SearchBar = ({ handleSearchInput }) => {
+
+interface Props {
+  handleSearchInput: ChangeEventHandler<HTMLInputElement>; // Define the type for handleSearchInput
+}
+
+const SearchBar: React.FC<Props> = ({ handleSearchInput }) => {
   return (
     <div>
       {' '}
