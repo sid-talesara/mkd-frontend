@@ -4,12 +4,17 @@ import { GoogleMap, InfoWindowF, MarkerF, useLoadScript } from '@react-google-ma
 import { markersLocation as markers } from '@/shared/data';
 import Image from 'next/image';
 import Link from 'next/link';
-type Props = {};
 
-const NearByStoresPage = ({ activeMarker, setActiveMarker, handleActiveMarker }) => {
+interface NearByStoresPageProps {
+  activeMarker: number | null;
+  setActiveMarker: (markerId: number | null) => void;
+  handleActiveMarker: (markerId: number) => void;
+}
+const NearByStoresPage: React.FC<NearByStoresPageProps> = ({ activeMarker, setActiveMarker, handleActiveMarker }) => {
   // const [activeMarker, setActiveMarker] = useState(null);
+  const googleMapsApiKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || '';
   const { isLoaded, loadError } = useLoadScript({
-    googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY,
+    googleMapsApiKey: googleMapsApiKey,
   });
 
   if (loadError) {
@@ -37,7 +42,7 @@ const NearByStoresPage = ({ activeMarker, setActiveMarker, handleActiveMarker })
                 onClick={() => handleActiveMarker(id)}
                 icon={{
                   url: '/marker.png',
-                  scaledSize: { width: 60, height: 60 },
+                  scaledSize: new google.maps.Size(60, 60),
                 }}
               >
                 {activeMarker === id ? (
