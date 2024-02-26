@@ -20,9 +20,6 @@ const NearByStoresPage = ({ activeMarker, setActiveMarker, handleActiveMarker })
     return <div>Loading maps</div>;
   }
 
-  // const handleActiveMarker = (markerId) => {
-  //   setActiveMarker(markerId === activeMarker ? null : markerId);
-  // };
   return (
     <div>
       <div style={{ height: '100vh', width: '100%' }}>

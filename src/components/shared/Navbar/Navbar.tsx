@@ -70,7 +70,7 @@ const NavbarComponent = () => {
                 </Link>
               </li>
               <li>
-                <Link href="/blog" className="text-base   dark:text-white hover:underline flex gap-3 items-center">
+                <Link href="/blogs" className="text-base   dark:text-white hover:underline flex gap-3 items-center">
                   <GrArticle className="text-lg" />
 
                   <p>Blogs</p>
