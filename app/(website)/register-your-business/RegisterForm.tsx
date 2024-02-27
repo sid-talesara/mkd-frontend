@@ -10,14 +10,34 @@ const RegisterForm = () => {
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
   const [message, setMessage] = useState('');
+  const [coordinates, setCoordinates] = useState({});
+
+  function extractCoordinates(url: string) {
+    // This regex is designed to match the latitude and longitude in the URL
+    const regex = /@([\-0-9\.]+),([\-0-9\.]+)/;
+    const matches = url.match(regex);
+
+    if (matches && matches.length >= 3) {
+      const latitude = parseFloat(matches[1]);
+      const longitude = parseFloat(matches[2]);
+      return { latitude, longitude };
+    } else {
+      // If no match is found, return null or an appropriate response
+      return null;
+    }
+  }
 
   const handleSubmit = async () => {
     try {
       const date = new Date();
+      const coordinatesData = extractCoordinates(shopLocation);
+      if (coordinatesData === null) return;
       const jsonData = {
         name: name,
         shop: shopName,
         shopLocation: shopLocation,
+        lat: coordinatesData.latitude,
+        lon: coordinatesData.longitude,
         gstNum: gstNum,
         email: email,
         phone: phone,
