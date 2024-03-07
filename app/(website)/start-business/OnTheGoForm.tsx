@@ -67,7 +67,7 @@ const OnTheGoPage = () => {
         setName('');
         setPhone('');
         setGstNum('');
-        setShopLocation('');
+        // setShopLocation('');
         setShopName('');
       }
 
@@ -131,7 +131,6 @@ const OnTheGoPage = () => {
             <div>
               <label htmlFor="gst" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
                 GST Number
-                <span> *</span>
               </label>
               <input
                 type="text"
@@ -140,11 +139,10 @@ const OnTheGoPage = () => {
                 onChange={(e) => setGstNum(e.target.value)}
                 className="block p-3 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 shadow-sm focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light"
                 placeholder="08AAAAA0000A1Z5"
-                required
               />
             </div>
 
-            {/* Shop Location */}
+            {/* Shop Location
             <div>
               <label htmlFor="subject" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
                 Shop Location
@@ -159,7 +157,7 @@ const OnTheGoPage = () => {
                 placeholder="Google Location Link"
                 required
               />
-            </div>
+            </div> */}
 
             {/* Email */}
             <div>
