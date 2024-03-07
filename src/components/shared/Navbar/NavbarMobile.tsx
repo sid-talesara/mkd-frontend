@@ -9,6 +9,7 @@ import { SlBookOpen } from 'react-icons/sl';
 import { IoReorderThreeOutline } from 'react-icons/io5';
 import { useState } from 'react';
 import Button from '../Buttons/Button';
+import { RiShoppingCart2Line } from 'react-icons/ri';
 const NavbarMobileComponent = () => {
   const [toggle, setToggle] = useState(false);
   const handleToggle = () => {};
@@ -72,16 +73,26 @@ const NavbarMobileComponent = () => {
                     <p>About Us</p>
                   </Link>
                 </li>
+
                 <li>
                   <Link
                     href="/register-your-business"
-                    className="  dark:text-white hover:underline flex gap-5 items-center  hover:bg-mkd-light hover:text-mkd-dark p-2 rounded-md"
+                    className="text-base   dark:text-white hover:underline flex py-3 gap-3 items-center"
                   >
                     <MdWorkOutline className="text-lg" />
-
-                    <p>Services</p>
+                    <p>Mobile Shops (List Your Store)</p>
                   </Link>
                 </li>
+                <li>
+                  <Link
+                    href="/start-business"
+                    className="text-base   dark:text-white hover:underline flex gap-3 items-center"
+                  >
+                    <RiShoppingCart2Line className="text-lg" />
+                    <p>E-Cart (Start Your Business)</p>
+                  </Link>
+                </li>
+
                 <li>
                   <Link
                     href="/nearby-stores"
@@ -92,7 +103,7 @@ const NavbarMobileComponent = () => {
                     <p>Nearby Stores</p>
                   </Link>
                 </li>
-                <li>
+                {/* <li>
                   <Link
                     href="/blogs"
                     className="  dark:text-white hover:underline flex gap-5 items-center  hover:bg-mkd-light hover:text-mkd-dark p-2 rounded-md"
@@ -101,7 +112,7 @@ const NavbarMobileComponent = () => {
 
                     <p>Blogs</p>
                   </Link>
-                </li>
+                </li> */}
                 <li>
                   <Link
                     href="/contact"
