@@ -16,7 +16,7 @@ import Image from 'next/image';
 export default function Carousal() {
   return (
     <>
-      <div className="h-[60vh] hidden md:block">
+      <div className="h-[60vh] hidden md:block ">
         <Swiper
           cssMode={true}
           navigation={true}

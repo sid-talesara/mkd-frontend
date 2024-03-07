@@ -17,16 +17,23 @@ const AboutHero = (props: Props) => {
                 <span className="font-bold">ABOUT </span>
                 MOBILE KI DUKAN
               </h3>
-              <h5 className="text-2xl py-4">Some really fancy heading that is eye catchy</h5>
+              <h5 className="text-2xl py-4 font-semibold">India's fastest-growing next generation mobile Shops.</h5>
               <p className="text-base pb-6 text-justify">
-                Some really fancy heading that is eye catchySome really fancy heading that is eye catchySome really
-                fancy heading that is eye catchySome really fancy heading that is eye catchySome really fancy heading
-                that is eye catchySome really fancy heading that is eye catchy
+                Mobile Ki Dukan, founded in 2019 is Jaipur, Rajasthan's premier next-generation mobile shop, devoted
+                solely to mobile shop owners in India offering to extend their reach and enhance walk-in traffic.
               </p>
               <p className="text-base pb-6 text-justify">
-                Some really fancy heading that is eye catchySome really fancy heading that is eye catchySome really
-                fancy heading that is eye catchySome really fancy heading that is eye catchySome really fancy heading
-                that is eye catchySome really fancy heading that is eye catchy
+                In less than four years, we have helped over 100 mobile stores in key locations and enhanced their
+                online presence among relevant smartphone customers, establishing us as the premier mobile seller
+                platform.
+              </p>
+              <p className="text-base pb-6 text-justify">
+                <span className="font-bold">Our Mission : Meri Dukan Meri Pahchan</span>
+                <br />
+                We aim to leverage the digital medium optimally, to enable easy discovery between trusted neighborhood
+                mobile ki dukan options and the right customers living nearby through transparent listings. And we do
+                all this without mandating any changes to your brand identity, philosophy or operating vision. Join the
+                #MeriDukanMeriPahchan movement to become a #NextGenerationShop
               </p>
             </div>
             {/* right */}

@@ -1,23 +1,34 @@
 import FeaturedShops from '@/components/Home/FeaturedShops';
-import FAQPage from '@/components/shared/FAQ/Faq';
 import FeaturesSection from '@/components/Home/FeaturesSection';
+import OnTheGoSection from '@/components/Home/OnTheGoSection';
+import FAQPage from '@/components/shared/FAQ/Faq';
 import Testimonial from '@/components/shared/Testimonial/Testimonial';
-import React from 'react';
 import Carousal from './Carousal';
 import ShopkeepersCTA from '@/components/CTAs/ShopkeepersCTA';
-import AboutSection from '@/components/Home/AboutSection';
+import {
+  GeneralFaqQuestions,
+  HomePageCTA,
+  HomeTestimonialData,
+  HomepageFeaturesData,
+  RegisterBusinessFAQ,
+} from '@/shared/data';
 
 const Homepage = () => {
   return (
     <div className="">
       <Carousal />
+      {/* highlight shops */}
       <FeaturedShops />
-      <FeaturesSection type={'light'} />
-      <AboutSection type={'dark'} />
-
-      <Testimonial />
-      <ShopkeepersCTA />
-      <FAQPage />
+      {/* benefits */}
+      <FeaturesSection type={'light'} data={HomepageFeaturesData} />
+      {/* on the go cta */}
+      <OnTheGoSection type={'dark'} />
+      {/* testimonials */}
+      <Testimonial data={HomeTestimonialData} />
+      {/* shopkeeper cta */}
+      <ShopkeepersCTA {...HomePageCTA} />
+      {/* faq's */}
+      <FAQPage data={GeneralFaqQuestions} />
     </div>
   );
 };

@@ -1,18 +1,21 @@
 import ShopkeepersCTA from '@/components/CTAs/ShopkeepersCTA';
-import AboutSection from '@/components/Home/AboutSection';
-import FeaturesSection from '@/components/Home/FeaturesSection';
 import React from 'react';
 import AboutHero from './AboutHero';
+import { AboutPageCTA } from '@/shared/data';
+import AboutSection from './AboutSection';
 
 type Props = {};
 
 const AboutUsPage = (props: Props) => {
   return (
     <div>
-      <AboutHero />
-      <FeaturesSection type={'dark'} />
+      <div className="py-5">
+        <AboutHero />
+      </div>
+      {/* <FeaturesSection type={'dark'} /> */}
+      <ShopkeepersCTA {...AboutPageCTA} />
+
       <AboutSection type={'light'} />
-      <ShopkeepersCTA />
     </div>
   );
 };

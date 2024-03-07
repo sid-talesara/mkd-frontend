@@ -9,11 +9,11 @@ const NearByStores = () => {
     setActiveMarker(markerId === activeMarker ? null : markerId);
   };
   return (
-    <div className="flex flex-col lg:flex-row lg:flex-row-reverse w-screen">
+    <div className="flex flex-col lg:flex-row overflow-x-hidden w-screen">
       <div className="w-screen lg:w-96 sideBar overflow-x-hidden">
         <Sidebar handleActiveMarker={handleActiveMarker} />
       </div>
-      <div className="w-screen content lg:w-full">
+      <div className=" content lg:w-full">
         <NearByStoresPage
           activeMarker={activeMarker}
           setActiveMarker={setActiveMarker}

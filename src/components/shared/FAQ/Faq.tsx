@@ -1,9 +1,9 @@
 'use client';
 import Link from 'next/link';
 import React, { useState } from 'react';
-import { GeneralFaqQuestions } from '@/shared/data';
+import { faq } from '@/shared/types';
 
-const FAQPage = () => {
+const FAQPage: React.FC<{ data: faq[] }> = ({ data }) => {
   const [toggle, setToggle] = useState(0);
   const toggleContent = (index: number) => {
     setToggle(index);
@@ -20,7 +20,7 @@ const FAQPage = () => {
 
         <div>
           {/* FAQs */}
-          {GeneralFaqQuestions.map((item, index) => (
+          {data.map((item: faq, index: number) => (
             <div
               key={item.id}
               className={`transition-all duration-200 py-2 bg-white border border-gray-200 shadow-lg cursor-pointer hover:bg-gray-50 ${
@@ -41,7 +41,7 @@ const FAQPage = () => {
                   viewBox="0 0 24 24"
                   stroke="currentColor"
                 >
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
                 </svg>
               </button>
 

@@ -1,3 +1,5 @@
+'use client';
+import React, { useState } from 'react';
 import Link from 'next/link';
 import { FaPhoneAlt } from 'react-icons/fa';
 import { MdStorefront, MdWorkOutline, MdOutlineMessage } from 'react-icons/md';
@@ -6,6 +8,7 @@ import { GrArticle } from 'react-icons/gr';
 import { SlBookOpen } from 'react-icons/sl';
 import Button from '../Buttons/Button';
 const NavbarComponent = () => {
+  const [showMenu, setShowMenu] = useState(false);
   return (
     <div className="sticky top-0 ">
       <nav className="bg-white border-gray-200 dark:bg-gray-900">
@@ -49,15 +52,36 @@ const NavbarComponent = () => {
                   <p>About Us</p>
                 </Link>
               </li>
-              <li>
-                <Link
-                  href="/register-your-business"
+              <li className="relative" onClick={() => setShowMenu(!showMenu)}>
+                <p
+                  onClick={() => setShowMenu(!showMenu)}
                   className="text-base   dark:text-white hover:underline flex gap-3 items-center"
                 >
                   <MdWorkOutline className="text-lg" />
 
-                  <p>Services</p>
-                </Link>
+                  <p>Partner with us</p>
+                </p>
+
+                {showMenu && (
+                  <div className="absolute top-6 bg-mkd-dark p-5 w-80 z-50">
+                    <li>
+                      <Link
+                        href="/register-your-business"
+                        className="text-base   dark:text-white hover:underline flex py-3 gap-3 items-center"
+                      >
+                        <p>- Mobile Shops (List Your Store)</p>
+                      </Link>
+                    </li>
+                    <li>
+                      <Link
+                        href="/start-business"
+                        className="text-base   dark:text-white hover:underline flex gap-3 items-center"
+                      >
+                        <p>- E-Cart (Start Your Business)</p>
+                      </Link>
+                    </li>
+                  </div>
+                )}
               </li>
               <li>
                 <Link
@@ -69,13 +93,13 @@ const NavbarComponent = () => {
                   <p>Nearby Stores</p>
                 </Link>
               </li>
-              <li>
+              {/* <li>
                 <Link href="/blogs" className="text-base   dark:text-white hover:underline flex gap-3 items-center">
                   <GrArticle className="text-lg" />
 
                   <p>Blogs</p>
                 </Link>
-              </li>
+              </li> */}
               <li>
                 <Link href="/contact" className="text-base   dark:text-white hover:underline flex gap-3 items-center">
                   <MdOutlineMessage className="text-lg" />

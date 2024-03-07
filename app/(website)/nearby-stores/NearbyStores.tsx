@@ -26,44 +26,42 @@ const NearByStoresPage: React.FC<NearByStoresPageProps> = ({ activeMarker, setAc
   }
 
   return (
-    <div>
-      <div style={{ height: '100vh', width: '100%' }}>
-        {isLoaded ? (
-          <GoogleMap
-            center={{ lat: 26.904276, lng: 75.808762 }}
-            zoom={13}
-            onClick={() => setActiveMarker(null)}
-            mapContainerStyle={{ width: '100%', height: '100vh' }}
-          >
-            {markers.map(({ id, name, position }) => (
-              <MarkerF
-                key={id}
-                position={position}
-                onClick={() => handleActiveMarker(id)}
-                icon={{
-                  url: '/marker.png',
-                  scaledSize: new google.maps.Size(60, 60),
-                }}
-              >
-                {activeMarker === id ? (
-                  <InfoWindowF onCloseClick={() => setActiveMarker(null)}>
-                    <div className="">
-                      <Image src={'/mkd-logo-dark.png'} width={30} height={30} alt="mkd-logo" />
-                      <p className="text-lg font-semibold pt-1 ">{name}</p>
-                      <Link href={'tel:+917073232505'}>
-                        <p className="underline py-1 ">Ph: +91-98988-09989</p>
-                      </Link>
-                      <Link href={'tel:+917073232505'}>
-                        <p className="py-1 text-blue-600">Open Maps</p>
-                      </Link>
-                    </div>
-                  </InfoWindowF>
-                ) : null}
-              </MarkerF>
-            ))}
-          </GoogleMap>
-        ) : null}
-      </div>
+    <div style={{ height: '100vh', width: '100%' }}>
+      {isLoaded ? (
+        <GoogleMap
+          center={{ lat: 26.89493412218653, lng: 75.80415140527356 }}
+          zoom={12}
+          onClick={() => setActiveMarker(null)}
+          mapContainerStyle={{ width: '100%', height: '100vh' }}
+        >
+          {markers.map(({ id, name, position, phoneNumber, link }) => (
+            <MarkerF
+              key={id}
+              position={position}
+              onClick={() => handleActiveMarker(id)}
+              icon={{
+                url: '/marker.png',
+                scaledSize: new google.maps.Size(60, 60),
+              }}
+            >
+              {activeMarker === id ? (
+                <InfoWindowF onCloseClick={() => setActiveMarker(null)}>
+                  <div className="">
+                    <Image src={'/mkd-logo-dark.png'} width={30} height={30} alt="mkd-logo" />
+                    <p className="text-lg font-semibold pt-1 ">{name}</p>
+                    <Link href={`tel:${phoneNumber}`}>
+                      <p className="underline py-1 ">{phoneNumber}</p>
+                    </Link>
+                    <Link href={link} target="_blank">
+                      <p className="py-1 text-blue-600">Open Maps</p>
+                    </Link>
+                  </div>
+                </InfoWindowF>
+              ) : null}
+            </MarkerF>
+          ))}
+        </GoogleMap>
+      ) : null}
     </div>
   );
 };

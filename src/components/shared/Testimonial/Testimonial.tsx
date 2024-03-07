@@ -1,6 +1,6 @@
-import React from 'react';
-import { testimonialData } from '@/shared/data';
+import { TestimonialsTypes } from '@/shared/types';
 
+// return number of stars
 const renderStars = (numStars: number) => {
   const stars = [];
   for (let i = 0; i < numStars; i++) {
@@ -18,8 +18,8 @@ const renderStars = (numStars: number) => {
   }
   return stars;
 };
-
-const Testimonial: React.FC = () => {
+// Testimonials Component
+const Testimonial: React.FC<{ data: TestimonialsTypes[] }> = ({ data }) => {
   return (
     <section className="bg-markals-light mx-auto max-w-screen-xl px-4 py-8 sm:px-6 lg:px-8 lg:py-16 flex flex-col gap-5 ">
       {/* heading */}
@@ -44,24 +44,22 @@ const Testimonial: React.FC = () => {
 
           <p className="text-sm text-gray-500">Average User Rating</p>
         </div>
-        {testimonialData.map((review) => (
+        {/* Individual Testimonials */}
+        {data.map((review: TestimonialsTypes) => (
           <div className="mb-8 sm:break-inside-avoid" key={review.id}>
             <blockquote className="rounded-lg bg-white p-6 shadow-sm hover:shadow-lg transition-all duration-300 sm:p-8">
               <div className="flex items-center gap-4">
-                <img
-                  alt="Man"
-                  src={'https://xsgames.co/randomusers/avatar.php?g=male'}
-                  className="h-14 w-14 rounded-full object-cover"
-                />
+                <img alt="Man" src={review.imgUrl} className="h-14 w-14 rounded-full object-cover" />
 
                 <div>
                   <div className="flex justify-start gap-0.5 text-yellow-400">
                     {/* star */}
-                    {renderStars(review.stars)}
+                    {renderStars(review?.stars ?? 3)}
                   </div>
 
-                  <p className="mt-0.5 text-lg font-medium text-gray-900">{review.author}</p>
-                  <p className="mt-0.5 text-sm font-normal text-gray-500">{review.company}</p>
+                  <p className="mt-0.5 text-lg font-medium text-gray-900">{review?.author}</p>
+
+                  <p className="mt-0.5 text-sm font-normal text-gray-500">{review?.company}</p>
                 </div>
               </div>
 

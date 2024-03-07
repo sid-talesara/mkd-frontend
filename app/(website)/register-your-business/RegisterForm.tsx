@@ -89,9 +89,9 @@ const RegisterForm = () => {
             <span className="font-bold">REGISTER </span>
             YOUR BUSINESS
           </h3>
-          <p className="mb-8 lg:mb-16 font-light text-center text-gray-500 dark:text-gray-400 sm:text-xl">
+          {/* <p className="mb-8 lg:mb-16 font-light text-center text-gray-500 dark:text-gray-400 sm:text-xl">
             Register Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam, voluptas?
-          </p>
+          </p> */}
           <form className="space-y-8">
             {/* name */}
             <div>

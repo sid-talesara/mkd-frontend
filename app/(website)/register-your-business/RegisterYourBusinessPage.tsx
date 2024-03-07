@@ -5,6 +5,13 @@ import Testimonial from '@/components/shared/Testimonial/Testimonial';
 import React from 'react';
 import RegisterForm from './RegisterForm';
 import Image from 'next/image';
+import {
+  HomeTestimonialData,
+  HomepageFeaturesData,
+  RegisterBusinessFAQ,
+  RegisterFeaturesData,
+  shopkeeperTestimonials,
+} from '@/shared/data';
 
 type Props = {};
 
@@ -32,13 +39,13 @@ const RegisterYourBusinessPage = (props: Props) => {
         />
       </div>
       <RegisterForm />
-      <FeaturesSection type="dark" />
+      <FeaturesSection type={'dark'} data={RegisterFeaturesData} />
       <div className="pt-12">
         <MediaRecognition type="brand" />
       </div>
-      <Testimonial />
+      <Testimonial data={shopkeeperTestimonials} />
       {/* owner contact */}
-      <FAQPage />
+      <FAQPage data={RegisterBusinessFAQ} />
     </div>
   );
 };
