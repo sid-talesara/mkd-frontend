@@ -5,21 +5,25 @@ import { markersLocation as markers } from '@/shared/data';
 import Image from 'next/image';
 import Link from 'next/link';
 import axios from 'axios';
+import { Marker } from '@/shared/types';
 
 interface NearByStoresPageProps {
   location: {
     lat: number;
     lng: number;
   };
-  activeMarker: number | null;
-  setActiveMarker: (markerId: number | null) => void;
-  handleActiveMarker: (markerId: number) => void;
+  activeMarker: string | null; // Adjusted to string to match Marker id type
+  setActiveMarker: (markerId: string | null) => void;
+  handleActiveMarker: (markerId: string) => void; // Adjusted to string to match Marker id type
+  markersData: Marker[]; // Corrected to an array of Marker objects
 }
+
 const NearByStoresPage: React.FC<NearByStoresPageProps> = ({
   location,
   activeMarker,
   setActiveMarker,
   handleActiveMarker,
+  markersData,
 }) => {
   // const [activeMarker, setActiveMarker] = useState(null);
   const googleMapsApiKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || '';
@@ -35,28 +39,6 @@ const NearByStoresPage: React.FC<NearByStoresPageProps> = ({
     return <div>Loading maps</div>;
   }
 
-  console.log(location);
-
-  const fetchData = async () => {
-    const params = {
-      apiKey: `${process.env.NEXT_PUBLIC_SHEETSON_API_KEY}`,
-      spreadsheetId: `${process.env.NEXT_PUBLIC_SHEETID}`,
-    };
-
-    const url = `${process.env.NEXT_PUBLIC_SHEETSON_URL}/v2/sheets/${process.env.NEXT_PUBLIC_SHEETNAME_2}`;
-
-    try {
-      const response = await axios.get(url, { params });
-      console.log(response.data);
-    } catch (error) {
-      console.error('Error fetching data:', error);
-    }
-  };
-
-  // useEffect(() => {
-  fetchData();
-  // }, []);
-
   return (
     <div style={{ height: '100vh', width: '100%' }}>
       {isLoaded ? (
@@ -66,25 +48,25 @@ const NearByStoresPage: React.FC<NearByStoresPageProps> = ({
           onClick={() => setActiveMarker(null)}
           mapContainerStyle={{ width: '100%', height: '100vh' }}
         >
-          {markers.map(({ id, name, position, phoneNumber, link }) => (
+          {markersData.map((marker: Marker) => (
             <MarkerF
-              key={id}
-              position={position}
-              onClick={() => handleActiveMarker(id)}
+              key={marker.id}
+              position={{ lat: parseFloat(marker.lat), lng: parseFloat(marker.lng) }} // Conversion to number
+              onClick={() => handleActiveMarker(marker.id)}
               icon={{
                 url: '/marker.png',
                 scaledSize: new google.maps.Size(60, 60),
               }}
             >
-              {activeMarker === id ? (
+              {activeMarker === marker.id ? (
                 <InfoWindowF onCloseClick={() => setActiveMarker(null)}>
                   <div className="">
                     <Image src={'/mkd-logo-dark.png'} width={30} height={30} alt="mkd-logo" />
-                    <p className="text-lg font-semibold pt-1 ">{name}</p>
-                    <Link href={`tel:${phoneNumber}`}>
-                      <p className="underline py-1 ">{phoneNumber}</p>
+                    <p className="text-lg font-semibold pt-1 ">{marker.name}</p>
+                    <Link href={`tel:${marker.phone}`}>
+                      <p className="underline py-1 ">{marker.phone}</p>
                     </Link>
-                    <Link href={link} target="_blank">
+                    <Link href={marker.shopLocation} target="_blank">
                       <p className="py-1 text-blue-600">Open Maps</p>
                     </Link>
                   </div>

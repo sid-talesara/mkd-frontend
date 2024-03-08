@@ -1,14 +1,16 @@
 import CardTags from '@/components/shared/Cards/CardTags';
-import { markersLocation } from '@/shared/data';
+// import { markersLocation } from '@/shared/data';
 import Link from 'next/link';
 import React, { useState } from 'react';
 import { FaStar } from 'react-icons/fa';
 import SearchBar from './SearchBar';
+import { Marker } from '@/shared/types';
 type Props = {
-  handleActiveMarker: (markerId: number) => void;
+  handleActiveMarker: (markerId: string) => void;
+  markersData: Marker[];
 };
 
-const ShopCard: React.FC<Props> = ({ handleActiveMarker }) => {
+const ShopCard: React.FC<Props> = ({ handleActiveMarker, markersData }) => {
   // Use FC type and Props interface
   const [searchInput, setSearchInput] = useState('');
 
@@ -16,7 +18,7 @@ const ShopCard: React.FC<Props> = ({ handleActiveMarker }) => {
     // Define event type
     setSearchInput(e.target.value);
   };
-  const filteredMarkers = markersLocation.filter((location) =>
+  const filteredMarkers = markersData.filter((location) =>
     location.name.toLowerCase().includes(searchInput.toLowerCase()),
   );
   return (
@@ -39,7 +41,7 @@ const ShopCard: React.FC<Props> = ({ handleActiveMarker }) => {
             ))}
           </p> */}
           <Link href={'tel:+917073232505'}>
-            <p className="underline text-sm">Ph: {location.phoneNumber}</p>
+            <p className="underline text-sm">Ph: {location.phone}</p>
           </Link>
         </div>
       ))}

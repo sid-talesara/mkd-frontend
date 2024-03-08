@@ -38,3 +38,23 @@ export interface faq {
   question: string;
   answer: string;
 }
+
+export interface Marker {
+  Remarks: string;
+  address: string;
+  contacted: string;
+  date: string;
+  desc: string;
+  email: string;
+  gstNum: string;
+  id: string;
+  isValid: string;
+  lat: string;
+  lng: string;
+  message: string;
+  name: string;
+  phone: string;
+  rowIndex: number;
+  shop: string;
+  shopLocation: string;
+}
