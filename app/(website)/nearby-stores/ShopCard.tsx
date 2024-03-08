@@ -30,14 +30,14 @@ const ShopCard: React.FC<Props> = ({ handleActiveMarker }) => {
             handleActiveMarker(location.id);
           }}
         >
-          <div className="absolute top-2 right-2 z-10">{location.id % 2 !== 0 && <CardTags title="Top Rated" />}</div>
+          {/* <div className="absolute top-2 right-2 z-10">{location.id % 2 !== 0 && <CardTags title="Top Rated" />}</div> */}
           <p className="text-xl">{location.name}</p>
           <p className="text-sm">{location.address}</p>
-          <p className="py-2 text-yellow-500 flex gap-1">
+          {/* <p className="py-2 text-yellow-500 flex gap-1">
             {Array.from({ length: location.rating }).map((_, index) => (
               <FaStar key={index} />
             ))}
-          </p>
+          </p> */}
           <Link href={'tel:+917073232505'}>
             <p className="underline text-sm">Ph: {location.phoneNumber}</p>
           </Link>

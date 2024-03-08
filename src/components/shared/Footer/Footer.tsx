@@ -15,7 +15,7 @@ const Footer = (props: Props) => {
           {/* Social Media Handles */}
           <ul className="mt-8 flex justify-center gap-6 sm:mt-0 sm:justify-end">
             <li>
-              <a href="#" rel="noreferrer" target="_blank" className=" transition hover:opacity-75">
+              <Link href="#" rel="noreferrer" target="_blank" className=" transition hover:opacity-75">
                 <span className="sr-only">Facebook</span>
 
                 <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -25,11 +25,11 @@ const Footer = (props: Props) => {
                     clipRule="evenodd"
                   />
                 </svg>
-              </a>
+              </Link>
             </li>
 
             <li>
-              <a href="#" rel="noreferrer" target="_blank" className=" transition hover:opacity-75">
+              <Link href="#" rel="noreferrer" target="_blank" className=" transition hover:opacity-75">
                 <span className="sr-only">Instagram</span>
 
                 <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -39,17 +39,17 @@ const Footer = (props: Props) => {
                     clipRule="evenodd"
                   />
                 </svg>
-              </a>
+              </Link>
             </li>
 
             <li>
-              <a href="#" rel="noreferrer" target="_blank" className=" transition hover:opacity-75">
+              <Link href="#" rel="noreferrer" target="_blank" className=" transition hover:opacity-75">
                 <span className="sr-only">Twitter</span>
 
                 <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                   <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" />
                 </svg>
-              </a>
+              </Link>
             </li>
           </ul>
         </div>
@@ -62,17 +62,23 @@ const Footer = (props: Props) => {
 
             <ul className="mt-6 space-y-4 text-sm text-mkd-light/75">
               <li>
-                <a href="#" className=" transition hover:opacity-75">
+                <Link href="/register-your-business" className=" transition hover:opacity-75">
                   {' '}
-                  Register your business
-                </a>
+                  List your business
+                </Link>
+              </li>
+              <li>
+                <Link href="/start-business" className=" transition hover:opacity-75">
+                  {' '}
+                  Start Business
+                </Link>
               </li>
 
               <li>
-                <a href="#" className=" transition hover:opacity-75">
+                <Link href="/nearby-stores" className=" transition hover:opacity-75">
                   {' '}
                   Nearby Stores
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -82,24 +88,24 @@ const Footer = (props: Props) => {
 
             <ul className="mt-6 space-y-4 text-sm  text-mkd-light/75">
               <li>
-                <a href="#" className=" transition hover:opacity-75">
+                <Link href="#" className=" transition hover:opacity-75">
                   {' '}
                   About Us{' '}
-                </a>
+                </Link>
               </li>
 
               <li>
-                <a href="#" className=" transition hover:opacity-75">
+                <Link href="#" className=" transition hover:opacity-75">
                   {' '}
                   Meet the Team{' '}
-                </a>
+                </Link>
               </li>
 
               <li>
-                <a href="#" className=" transition hover:opacity-75">
+                <Link href="#" className=" transition hover:opacity-75">
                   {' '}
                   Accounts Review{' '}
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -109,29 +115,26 @@ const Footer = (props: Props) => {
 
             <ul className="mt-6 space-y-4 text-sm  text-mkd-light/75 ">
               <li>
-                <a href="#" className=" transition hover:opacity-75">
-                  {' '}
+                <Link href="/faq" className=" transition hover:opacity-75">
                   FAQs
-                </a>
+                </Link>
               </li>
 
               <li>
-                <a href="#" className=" transition hover:opacity-75">
-                  {' '}
+                <Link href="/privacy-policy" className=" transition hover:opacity-75">
                   Privacy Policy
-                </a>
+                </Link>
               </li>
 
               <li>
-                <a href="#" className=" transition hover:opacity-75">
-                  {' '}
+                <Link href="/diclaimer" className=" transition hover:opacity-75">
                   Disclaimer
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className=" transition hover:opacity-75">
+                <Link href="/terms-and-condition" className=" transition hover:opacity-75">
                   Terms & Conditions
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -141,37 +144,37 @@ const Footer = (props: Props) => {
 
             <ul className="mt-6 space-y-4 text-sm  text-mkd-light/75">
               <li>
-                <a href="#" className=" transition hover:opacity-75">
+                <Link href="/" className=" transition hover:opacity-75">
                   {' '}
                   Home{' '}
-                </a>
+                </Link>
               </li>
 
               <li>
-                <a href="#" className=" transition hover:opacity-75">
+                <Link href="#" className=" transition hover:opacity-75">
                   {' '}
                   Services{' '}
-                </a>
+                </Link>
               </li>
 
               <li>
-                <a href="#" className=" transition hover:opacity-75">
+                <Link href="/nearby-stores" className=" transition hover:opacity-75">
                   {' '}
                   Nearby Stores{' '}
-                </a>
+                </Link>
               </li>
 
               <li>
-                <a href="#" className=" transition hover:opacity-75">
+                <Link href="/blogs" className=" transition hover:opacity-75">
                   {' '}
                   Blogs{' '}
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className=" transition hover:opacity-75">
+                <Link href="/contact" className=" transition hover:opacity-75">
                   {' '}
                   Contact{' '}
-                </a>
+                </Link>
               </li>
             </ul>
           </div>

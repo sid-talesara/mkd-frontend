@@ -12,7 +12,7 @@ const OnTheGoPage = () => {
     <div>
       {/* Register form */}
 
-      <div className="justify-center w-full hidden lg:flex">
+      <div className="justify-center w-full hidden lg:flex py-10 ">
         <Image
           src={'/otg-banner.png'}
           width={1500}

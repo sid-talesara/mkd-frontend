@@ -2,53 +2,37 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { formatDate } from '@/utils/FormatDate';
+import Loader from '@/components/shared/Loader';
+import { v4 as uuidv4 } from 'uuid';
+import { ToastContainer } from 'react-toastify';
 const OnTheGoPage = () => {
   const [name, setName] = useState('');
   const [shopName, setShopName] = useState('');
   const [gstNum, setGstNum] = useState('');
-  const [shopLocation, setShopLocation] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
   const [message, setMessage] = useState('');
-  const [coordinates, setCoordinates] = useState({});
-
-  function extractCoordinates(url: string) {
-    // This regex is designed to match the latitude and longitude in the URL
-    const regex = /@([\-0-9\.]+),([\-0-9\.]+)/;
-    const matches = url.match(regex);
-
-    if (matches && matches.length >= 3) {
-      const latitude = parseFloat(matches[1]);
-      const longitude = parseFloat(matches[2]);
-      return { latitude, longitude };
-    } else {
-      // If no match is found, return null or an appropriate response
-      return null;
-    }
-  }
+  const [showLoader, setShowLoader] = useState(false);
 
   const handleSubmit = async () => {
     try {
+      setShowLoader(true);
       const date = new Date();
-      const coordinatesData = extractCoordinates(shopLocation);
-      if (coordinatesData === null) return;
       const jsonData = {
+        id: uuidv4(),
+        date: formatDate(date.toISOString()),
         name: name,
-        shop: shopName,
-        shopLocation: shopLocation,
-        lat: coordinatesData.latitude,
-        lon: coordinatesData.longitude,
+        shopName: shopName,
         gstNum: gstNum,
         email: email,
         phone: phone,
         message: message,
         contacted: 'not-contacted',
         isValid: false,
-        date: formatDate(date.toISOString()),
       };
       console.log(jsonData);
       const res = await axios.post(
-        `${process.env.NEXT_PUBLIC_SHEETSON_URL}/v2/sheets/${process.env.NEXT_PUBLIC_SHEETNAME_2}`,
+        `${process.env.NEXT_PUBLIC_SHEETSON_URL}/v2/sheets/${process.env.NEXT_PUBLIC_SHEETNAME_3}`,
         jsonData,
         {
           headers: {
@@ -62,15 +46,15 @@ const OnTheGoPage = () => {
       console.log(res);
 
       if (res.status === 201) {
-        setEmail('');
-        setMessage('');
         setName('');
-        setPhone('');
-        setGstNum('');
-        // setShopLocation('');
         setShopName('');
+        setGstNum('');
+        setEmail('');
+        setPhone('');
+        setMessage('');
       }
 
+      setShowLoader(false);
       // Send query on whatsapp
       // const whatsappUrl = `https://api.whatsapp.com/send?phone=917340340679&text=Hello%20Markals%2C%0A${encodeURIComponent(
       //   `I am ${name} and I am looking for an agency to build my website.\nInfo about the website:\n\nMy Details\nEmail: ${email}\nPhone: ${phone}\n\nService Needed: ${service}\n\nAdditional Message: ${message}`,
@@ -206,13 +190,26 @@ const OnTheGoPage = () => {
               ></textarea>
             </div>
           </form>
+
           <button
             onClick={handleSubmit}
-            className="py-3 m-5 px-5 text-sm font-medium text-center text-white rounded-lg bg-primary-700 sm:w-fit hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+            className="py-3 flex gap-4 my-4 items-center px-5 text-sm font-medium text-center text-white rounded-lg bg-primary-700 sm:w-fit hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
           >
-            Send message
+            SEND MESSAGE {showLoader && <Loader />}
           </button>
         </div>
+        <ToastContainer
+          position="bottom-right"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="light"
+        />
       </section>
     </div>
   );

@@ -2,6 +2,9 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { formatDate } from '@/utils/FormatDate';
+import { v4 as uuidv4 } from 'uuid';
+import { ToastContainer, toast } from 'react-toastify';
+import Loader from '@/components/shared/Loader';
 const RegisterForm = () => {
   const [name, setName] = useState('');
   const [shopName, setShopName] = useState('');
@@ -10,7 +13,9 @@ const RegisterForm = () => {
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
   const [message, setMessage] = useState('');
-  const [coordinates, setCoordinates] = useState({});
+  const [shopAddress, setShopAddress] = useState('');
+  const [desc, setDesc] = useState('');
+  const [showLoader, setShowLoader] = useState(false);
 
   function extractCoordinates(url: string) {
     // This regex is designed to match the latitude and longitude in the URL
@@ -29,24 +34,28 @@ const RegisterForm = () => {
 
   const handleSubmit = async () => {
     try {
+      setShowLoader(true);
       const date = new Date();
       const coordinatesData = extractCoordinates(shopLocation);
       if (coordinatesData === null) return;
       const jsonData = {
+        id: uuidv4(),
         name: name,
         shop: shopName,
+        address: shopAddress,
+        desc: desc,
         shopLocation: shopLocation,
         lat: coordinatesData.latitude,
-        lon: coordinatesData.longitude,
+        lng: coordinatesData.longitude,
         gstNum: gstNum,
         email: email,
         phone: phone,
         message: message,
         contacted: 'not-contacted',
+
         isValid: false,
         date: formatDate(date.toISOString()),
       };
-      console.log(jsonData);
       const res = await axios.post(
         `${process.env.NEXT_PUBLIC_SHEETSON_URL}/v2/sheets/${process.env.NEXT_PUBLIC_SHEETNAME_2}`,
         jsonData,
@@ -58,24 +67,22 @@ const RegisterForm = () => {
           },
         },
       );
-
-      console.log(res);
-
       if (res.status === 201) {
         setEmail('');
         setMessage('');
         setName('');
         setPhone('');
+        setDesc('');
+        setShopAddress('');
+        setPhone('');
         setGstNum('');
         setShopLocation('');
         setShopName('');
       }
-
-      // Send query on whatsapp
-      // const whatsappUrl = `https://api.whatsapp.com/send?phone=917340340679&text=Hello%20Markals%2C%0A${encodeURIComponent(
-      //   `I am ${name} and I am looking for an agency to build my website.\nInfo about the website:\n\nMy Details\nEmail: ${email}\nPhone: ${phone}\n\nService Needed: ${service}\n\nAdditional Message: ${message}`,
-      // )}`;
-      // window.open(whatsappUrl, '_blank');
+      toast.success('Form submitted successfully', {
+        position: 'bottom-right',
+      });
+      setShowLoader(false);
     } catch (error) {
       console.log(error);
     }
@@ -92,6 +99,10 @@ const RegisterForm = () => {
           {/* <p className="mb-8 lg:mb-16 font-light text-center text-gray-500 dark:text-gray-400 sm:text-xl">
             Register Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam, voluptas?
           </p> */}
+          {/* <div className="h-[60vh] flex justify-center items-center">
+            <Loader />
+          </div> */}
+
           <form className="space-y-8">
             {/* name */}
             <div>
@@ -161,6 +172,39 @@ const RegisterForm = () => {
               />
             </div>
 
+            {/* Shop Address */}
+            <div>
+              <label htmlFor="shopaddress" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                Shop Address
+                <span> *</span>
+              </label>
+              <input
+                type="text"
+                id="shopaddress"
+                value={shopAddress}
+                onChange={(e) => setShopAddress(e.target.value)}
+                className="block p-3 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 shadow-sm focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light"
+                placeholder="Shop Address"
+                required
+              />
+            </div>
+            {/* Shop Description */}
+            <div>
+              <label htmlFor="shopdesc" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                Shop Description
+                <span> *</span>
+              </label>
+              <input
+                type="text"
+                id="shopdesc"
+                value={desc}
+                onChange={(e) => setDesc(e.target.value)}
+                className="block p-3 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 shadow-sm focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light"
+                placeholder="About shop "
+                required
+              />
+            </div>
+
             {/* Email */}
             <div>
               <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
@@ -208,13 +252,26 @@ const RegisterForm = () => {
               ></textarea>
             </div>
           </form>
+
           <button
             onClick={handleSubmit}
-            className="py-3 px-5 text-sm font-medium text-center text-white rounded-lg bg-primary-700 sm:w-fit hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+            className="py-3 flex gap-4 my-4 items-center px-5 text-sm font-medium text-center text-white rounded-lg bg-primary-700 sm:w-fit hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
           >
-            Send message
+            SEND MESSAGE {showLoader && <Loader />}
           </button>
         </div>
+        <ToastContainer
+          position="bottom-right"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="light"
+        />
       </section>
     </div>
   );

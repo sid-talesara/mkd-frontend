@@ -25,12 +25,12 @@ const NavbarMobileComponent = () => {
           </Link>
           <div className="flex  items-center gap-2 rtl:space-x-reverse">
             <Link
-              href="tel:+919462551308"
+              href="tel:+917014878974"
               className="text-sm md:text-base text-gray-800 dark:text-white hover:underline flex gap-3 items-center"
             >
               <FaPhoneAlt />
 
-              <p>(+91) 94625-51308</p>
+              <p>(+91) 7014878974</p>
             </Link>
 
             <Link href="/" className="hidden md:visible">

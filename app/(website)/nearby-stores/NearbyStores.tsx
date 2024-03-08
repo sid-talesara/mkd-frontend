@@ -1,16 +1,26 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { GoogleMap, InfoWindowF, MarkerF, useLoadScript } from '@react-google-maps/api';
 import { markersLocation as markers } from '@/shared/data';
 import Image from 'next/image';
 import Link from 'next/link';
+import axios from 'axios';
 
 interface NearByStoresPageProps {
+  location: {
+    lat: number;
+    lng: number;
+  };
   activeMarker: number | null;
   setActiveMarker: (markerId: number | null) => void;
   handleActiveMarker: (markerId: number) => void;
 }
-const NearByStoresPage: React.FC<NearByStoresPageProps> = ({ activeMarker, setActiveMarker, handleActiveMarker }) => {
+const NearByStoresPage: React.FC<NearByStoresPageProps> = ({
+  location,
+  activeMarker,
+  setActiveMarker,
+  handleActiveMarker,
+}) => {
   // const [activeMarker, setActiveMarker] = useState(null);
   const googleMapsApiKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || '';
   const { isLoaded, loadError } = useLoadScript({
@@ -25,12 +35,34 @@ const NearByStoresPage: React.FC<NearByStoresPageProps> = ({ activeMarker, setAc
     return <div>Loading maps</div>;
   }
 
+  console.log(location);
+
+  const fetchData = async () => {
+    const params = {
+      apiKey: `${process.env.NEXT_PUBLIC_SHEETSON_API_KEY}`,
+      spreadsheetId: `${process.env.NEXT_PUBLIC_SHEETID}`,
+    };
+
+    const url = `${process.env.NEXT_PUBLIC_SHEETSON_URL}/v2/sheets/${process.env.NEXT_PUBLIC_SHEETNAME_2}`;
+
+    try {
+      const response = await axios.get(url, { params });
+      console.log(response.data);
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
+  };
+
+  // useEffect(() => {
+  fetchData();
+  // }, []);
+
   return (
     <div style={{ height: '100vh', width: '100%' }}>
       {isLoaded ? (
         <GoogleMap
-          center={{ lat: 26.89493412218653, lng: 75.80415140527356 }}
-          zoom={12}
+          center={{ lat: location.lat, lng: location.lng }}
+          zoom={15}
           onClick={() => setActiveMarker(null)}
           mapContainerStyle={{ width: '100%', height: '100vh' }}
         >
