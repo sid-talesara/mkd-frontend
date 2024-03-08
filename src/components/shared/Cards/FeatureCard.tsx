@@ -9,7 +9,7 @@ import { FeatureCardProps } from '@/shared/types';
 const FeatureCard = (props: FeatureCardProps) => {
   const Icon = props.icon;
   return (
-    <div className="min-w-64 w-fit bg-mkd-light flex flex-col justify-center items-center h-fit rounded-lg relative m-1 max-w-72 overflow-hidden p-5 hover:shadow-lg border-2  transition-all duration-300 my-0 md:my-6">
+    <div className="min-w-64  w-fit bg-mkd-light flex flex-col justify-center items-center h-60 rounded-lg relative m-1 max-w-72 overflow-hidden p-5 hover:shadow-lg border-2  transition-all duration-300 my-0 md:my-6">
       <div className="bg-mkd-accent/15 rounded-lg p-4 m-2">
         <Icon className="text-mkd-primary text-3xl" />
         {/* className="text-mkd-primary text-5xl" /> */}

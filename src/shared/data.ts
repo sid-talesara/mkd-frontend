@@ -3,6 +3,9 @@ import { LuBadgePercent } from 'react-icons/lu';
 import { FaStar } from 'react-icons/fa';
 import { MdHandshake } from 'react-icons/md';
 import { faq } from './types';
+import { FaUserCheck } from 'react-icons/fa';
+import { AiOutlineAreaChart } from 'react-icons/ai';
+import { MdOutlineScreenSearchDesktop, MdInventory } from 'react-icons/md';
 
 // Home Data
 export const HomeShopCardsData = [
@@ -62,25 +65,25 @@ export const HomepageFeaturesData = [
     id: 1,
     title: 'Best price',
     icon: FaRupeeSign,
-    desc: 'we offer the best prices among the local market.',
+    desc: 'best Price, amazing deals and great offers.',
   },
   {
     id: 2,
     title: 'Genuine Products',
     icon: MdHandshake,
-    desc: 'All mobile phones sold by stores are 100% original.',
+    desc: 'Explore wide range of 100% genuine mobile accessories with the best price.',
   },
   {
     id: 3,
     title: 'Exclusive Offers',
     icon: LuBadgePercent,
-    desc: 'Get special discounts and offers from Mobile ki Dukan.',
+    desc: 'Discover amazing offers and deals on variety of mobiles and accessories!',
   },
   {
     id: 4,
     title: 'Premium Services',
     icon: FaStar,
-    desc: 'Easy replacement, returns and great after sales service.',
+    desc: 'Your trust, satisfaction and delightful experience are our top priorities!',
   },
 ];
 
@@ -489,7 +492,7 @@ export const RegisterFeaturesData = [
   {
     id: 1,
     title: 'Wide Reach & Visibility',
-    icon: FaRupeeSign,
+    icon: AiOutlineAreaChart,
     desc: 'Instant access to thousands of active mobile buyers.',
   },
   {
@@ -501,13 +504,13 @@ export const RegisterFeaturesData = [
   {
     id: 3,
     title: 'User Friendly',
-    icon: LuBadgePercent,
+    icon: FaUserCheck,
     desc: 'All about your mobile Store in one place.',
   },
   {
     id: 4,
     title: 'Low Cost',
-    icon: FaStar,
+    icon: FaRupeeSign,
     desc: 'List your business with us at a minimal cost. ',
   },
 ];
@@ -522,19 +525,19 @@ export const OnTheGoFeaturesData = [
   {
     id: 2,
     title: 'Low investment',
-    icon: MdHandshake,
+    icon: LuBadgePercent,
     desc: 'Start your own shop with minimal investment.',
   },
   {
     id: 3,
     title: 'Better brand value',
-    icon: LuBadgePercent,
+    icon: MdOutlineScreenSearchDesktop,
     desc: 'Mobile Ki Dukan Provides brand value and trust.',
   },
   {
     id: 4,
     title: 'Best Brand Stock',
-    icon: FaStar,
+    icon: MdInventory,
     desc: 'get access to branded inventory from our associated brands.',
   },
 ];

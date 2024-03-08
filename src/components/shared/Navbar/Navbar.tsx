@@ -10,7 +10,8 @@ import Button from '../Buttons/Button';
 const NavbarComponent = () => {
   const [showMenu, setShowMenu] = useState(false);
   return (
-    <div className="sticky top-0 ">
+    <div className=" top-0 z-20 relative">
+      {/* Navbar-1 */}
       <nav className="bg-white border-gray-200 dark:bg-gray-900">
         <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl p-4">
           <Link href="/" className="flex items-center space-x-3 rtl:space-x-reverse">
@@ -28,13 +29,14 @@ const NavbarComponent = () => {
 
               <p>(+91) 94625-51308 </p>
             </Link>
-            <Link href="/">
+            <Link href="/register-your-business">
               <Button className="btn-primary">Register Your Business</Button>
             </Link>
           </div>
         </div>
       </nav>
-      <nav className="bg-mkd-dark text-mkd-light dark:bg-gray-700 ">
+      {/* Navbar-2 */}
+      <nav className="bg-mkd-dark text-mkd-light dark:bg-gray-700 z-50">
         <div className="max-w-screen-xl px-4 py-3 mx-auto">
           <div className="flex items-center  ">
             <ul className="flex flex-row font-normal w-full justify-between mt-0 space-x-8 rtl:space-x-reverse text-base">
@@ -55,15 +57,14 @@ const NavbarComponent = () => {
               <li className="relative" onClick={() => setShowMenu(!showMenu)}>
                 <p
                   onClick={() => setShowMenu(!showMenu)}
-                  className="text-base   dark:text-white hover:underline flex gap-3 items-center"
+                  className="text-base   dark:text-white hover:underline flex gap-3 items-center z-[10000]"
                 >
                   <MdWorkOutline className="text-lg" />
 
                   <p>Partner with us</p>
                 </p>
-
                 {showMenu && (
-                  <div className="absolute top-6 bg-mkd-dark p-5 w-80 z-50">
+                  <div className="absolute top-6 bg-mkd-dark p-5 w-80 z-auto">
                     <li>
                       <Link
                         href="/register-your-business"
@@ -89,7 +90,6 @@ const NavbarComponent = () => {
                   className="text-base   dark:text-white hover:underline flex gap-3 items-center"
                 >
                   <MdStorefront className="text-lg" />
-
                   <p>Nearby Stores</p>
                 </Link>
               </li>

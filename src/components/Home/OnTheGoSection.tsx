@@ -14,7 +14,7 @@ const OnTheGoSection = ({ type }: { type: string }) => {
         {/* info */}
         <div className="flex flex-col lg:flex-row w-full ">
           {/* left */}
-          <div className="w-full lg:w-1/2 bg-green-4d00 h-min flex flex-col px-12 py-10 justify-center">
+          <div className="w-full lg:w-1/2 h-min flex flex-col px-5 md:px-12 py-5 md:py-10 justify-center">
             <h5 className="text-4xl py-4">Revolutionizing mobile accessories market</h5>
             <p className="text-base pb-6 text-justify">
               The mobile accessories market in India is largely unorganized and disjointed. Customers struggle with

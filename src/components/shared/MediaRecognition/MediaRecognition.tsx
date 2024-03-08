@@ -9,7 +9,7 @@ const MediaRecognition = ({ type }: { type: string }) => {
         {/* brand logo */}
         {type === 'media'
           ? mediaRecognition.map((media) => (
-              <div className="w-24 h-24 m-5 lg:m-0 lg:w-32 lg:h-32   object-contain flex justify-center items-center  bg-white">
+              <div className="w-20 h-20 lg:w-32 lg:h-32 m-3 md:m-0  object-contain flex justify-center items-center  bg-white">
                 <Image src={media.src} alt={media.altText} width={1000} height={1000} />
               </div>
             ))

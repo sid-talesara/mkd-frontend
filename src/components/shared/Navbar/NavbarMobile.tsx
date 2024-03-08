@@ -86,7 +86,7 @@ const NavbarMobileComponent = () => {
                 <li>
                   <Link
                     href="/start-business"
-                    className="text-base   dark:text-white hover:underline flex gap-3 items-center"
+                    className="text-base   dark:text-white hover:underline py-3  flex gap-3 items-center"
                   >
                     <RiShoppingCart2Line className="text-lg" />
                     <p>E-Cart (Start Your Business)</p>
@@ -96,7 +96,7 @@ const NavbarMobileComponent = () => {
                 <li>
                   <Link
                     href="/nearby-stores"
-                    className="  dark:text-white hover:underline flex gap-5 items-center  hover:bg-mkd-light hover:text-mkd-dark p-2 rounded-md"
+                    className="  dark:text-white hover:underline flex gap-5 items-center py-3  hover:bg-mkd-light hover:text-mkd-dark p-2 rounded-md"
                   >
                     <MdStorefront className="text-lg" />
 
