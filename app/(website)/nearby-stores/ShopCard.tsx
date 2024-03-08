@@ -1,5 +1,4 @@
 import CardTags from '@/components/shared/Cards/CardTags';
-// import { markersLocation } from '@/shared/data';
 import Link from 'next/link';
 import React, { useState } from 'react';
 import { FaStar } from 'react-icons/fa';
@@ -18,9 +17,14 @@ const ShopCard: React.FC<Props> = ({ handleActiveMarker, markersData }) => {
     // Define event type
     setSearchInput(e.target.value);
   };
-  const filteredMarkers = markersData.filter((location) =>
+
+  const validMarkers = markersData.filter((location) => location.isValid === 'TRUE');
+
+  console.log(validMarkers);
+  const filteredMarkers = validMarkers.filter((location) =>
     location.name.toLowerCase().includes(searchInput.toLowerCase()),
   );
+
   return (
     <div className="flex flex-col w-full lg:w-80 gap-2 px-4  justify-center ">
       <SearchBar handleSearchInput={handleSearchInput} />
