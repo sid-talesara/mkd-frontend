@@ -1,71 +1,56 @@
-import React, { useEffect, useState } from 'react';
-import NearByStoresPage from './NearbyStores';
-import Sidebar from './Sidebar';
-import axios from 'axios';
-import Loader from '@/components/shared/Loader';
+import CardTags from '@/components/shared/Cards/CardTags';
+import Link from 'next/link';
+import React, { useState } from 'react';
+import { FaStar } from 'react-icons/fa';
+import SearchBar from './SearchBar';
+import { Marker } from '@/shared/types';
+type Props = {
+  handleActiveMarker: (markerId: string) => void;
+  markersData: Marker[];
+};
 
-const NearByStores = () => {
-  const [activeMarker, setActiveMarker] = useState<string | null>(null);
-  const [markersData, setMarkersData] = useState();
-  const [location, setLocation] = useState<{ lat: number; lng: number }>();
+const ShopCard: React.FC<Props> = ({ handleActiveMarker, markersData }) => {
+  // Use FC type and Props interface
+  const [searchInput, setSearchInput] = useState('');
 
-  useEffect(() => {
-    if ('geolocation' in navigator) {
-      navigator.geolocation.getCurrentPosition(({ coords }) => {
-        const { latitude, longitude } = coords;
-        console.log(latitude, longitude);
-        setLocation({ lat: latitude, lng: longitude });
-      });
-    }
-  }, []);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const params = {
-        apiKey: `${process.env.NEXT_PUBLIC_SHEETSON_API_KEY}`,
-        spreadsheetId: `${process.env.NEXT_PUBLIC_SHEETID}`,
-      };
-
-      const url = `${process.env.NEXT_PUBLIC_SHEETSON_URL}/v2/sheets/${process.env.NEXT_PUBLIC_SHEETNAME_2}`;
-
-      try {
-        const response = await axios.get(url, { params });
-        setMarkersData(response.data.results);
-      } catch (error) {
-        console.error('Error fetching data:', error);
-      }
-    };
-
-    fetchData();
-  }, []);
-
-  const handleActiveMarker = (markerId: string) => {
-    setActiveMarker(markerId === activeMarker ? null : markerId);
+  const handleSearchInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+    // Define event type
+    setSearchInput(e.target.value);
   };
 
+  const validMarkers = markersData.filter((location) => location.isValid === 'TRUE');
+
+  console.log(validMarkers);
+  const filteredMarkers = validMarkers.filter((location) =>
+    location.name.toLowerCase().includes(searchInput.toLowerCase()),
+  );
+
   return (
-    <div className="flex flex-col lg:flex-row overflow-x-hidden w-screen">
-      {markersData === undefined && (
-        <div className="h-screen w-screen flex justify-center items-center">
-          <Loader />
+    <div className="flex flex-col w-full lg:w-80 gap-2 px-4  justify-center ">
+      <SearchBar handleSearchInput={handleSearchInput} />
+      {filteredMarkers.map((location) => (
+        <div
+          key={location.id}
+          className="py-4 bg-white rounded-lg p-5 hover:shadow-lg border-2 hover:border-gray-500 relative"
+          onClick={() => {
+            handleActiveMarker(location.id);
+          }}
+        >
+          {/* <div className="absolute top-2 right-2 z-10">{location.id % 2 !== 0 && <CardTags title="Top Rated" />}</div> */}
+          <p className="text-xl">{location.name}</p>
+          <p className="text-sm">{location.address}</p>
+          {/* <p className="py-2 text-yellow-500 flex gap-1">
+            {Array.from({ length: location.rating }).map((_, index) => (
+              <FaStar key={index} />
+            ))}
+          </p> */}
+          <Link href={'tel:+917073232505'}>
+            <p className="underline text-sm">Ph: {location.phone}</p>
+          </Link>
         </div>
-      )}
-      <div className="w-screen lg:w-96 sideBar overflow-x-hidden">
-        {markersData !== undefined && <Sidebar handleActiveMarker={handleActiveMarker} markersData={markersData} />}
-      </div>
-      <div className=" content lg:w-full">
-        {location !== undefined && markersData !== undefined && (
-          <NearByStoresPage
-            location={location}
-            activeMarker={activeMarker}
-            setActiveMarker={setActiveMarker}
-            handleActiveMarker={handleActiveMarker}
-            markersData={markersData}
-          />
-        )}
-      </div>
+      ))}
     </div>
   );
 };
 
-export default NearByStores;
+export default ShopCard;
