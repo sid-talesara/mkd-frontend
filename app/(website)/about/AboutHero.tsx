@@ -10,7 +10,7 @@ const AboutHero = (props: Props) => {
       <div className=" text-mkd-dark flex justify-center">
         <div className="max-w-screen-xl  w-full py-0 md:py-8">
           {/* info */}
-          <div className="flex flex-col lg:flex-row w-full ">
+          <div className="flex  flex-col-reverse lg:flex-row w-full ">
             {/* left */}
             <div className="w-full lg:w-1/2 bg-green-4d00 h-min flex flex-col px-12 py-10 justify-center">
               <h3 className="text-4xl font-light py-8">

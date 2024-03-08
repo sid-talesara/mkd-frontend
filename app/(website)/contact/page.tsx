@@ -56,14 +56,14 @@ const ContactPage = () => {
   return (
     <div className="flex flex-col-reverse justify-center lg:flex lg:flex-row items-center ">
       {/* left */}
-      <div className="py-8 lg:py-16 px-4 mx-auto max-w-screen-md">
+      <div className="py-8 lg:py-16 px-4 mx-auto max-w-screen-md w-full md:w-1/2">
         <h3 className=" font-light  mb-4 text-4xl tracking-tight  text-gray-900 dark:text-white">
           <span className="font-bold">CONTACT </span>
           US
         </h3>
-        <p className="mb-8 lg:mb-16 font-light  text-gray-500 dark:text-gray-400 sm:text-xl">
+        {/* <p className="mb-8 lg:mb-16 font-light  text-gray-500 dark:text-gray-400 sm:text-xl">
           Register Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam, voluptas?
-        </p>
+        </p> */}
         <form className="space-y-8">
           {/* name */}
           <div>
