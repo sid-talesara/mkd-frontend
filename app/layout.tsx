@@ -34,7 +34,7 @@ export const metadata: Metadata = {
       "Mobile ki Dukan, Rajasthan's No. 1 listing Platform for mobile shop owners, retailers, and mobile accessories sellers. Find addresses, phone numbers, reviews and ratings, photos, maps of mobile shops.",
     images: [
       {
-        url: 'https://i.imgur.com/5aPjlm2.png',
+        url: 'https://i.imgur.com/WAEtcAt.jpeg',
         width: 1200,
         height: 630,
         alt: 'Find mobile shops Near You in Jaipur – Mobile Ki Dukan',
