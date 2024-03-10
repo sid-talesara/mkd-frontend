@@ -135,18 +135,22 @@ const Footer = (props: Props) => {
 
             <ul className="mt-6 space-y-4 text-sm  text-mkd-light/75 ">
               <li>
-                <Link href="/privacy-policy" className=" transition hover:opacity-75">
+                <Link href="/docs/MKD Privany Policy.pdf" target="_blank" className=" transition hover:opacity-75">
                   Privacy Policy
                 </Link>
               </li>
 
               <li>
-                <Link href="/diclaimer" className=" transition hover:opacity-75">
+                <Link href="/docs/MKD Disclaimer.pdf" target="_blank" className=" transition hover:opacity-75">
                   Disclaimer
                 </Link>
               </li>
               <li>
-                <Link href="/terms-and-condition" className=" transition hover:opacity-75">
+                <Link
+                  href="/docs/MKD Terms and Conditions.pdf"
+                  target="_blank"
+                  className=" transition hover:opacity-75"
+                >
                   Terms & Conditions
                 </Link>
               </li>
