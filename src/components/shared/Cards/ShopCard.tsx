@@ -25,7 +25,7 @@ const ShopCard = ({ shop }: { shop: ShopCardsProps }) => {
           <CardTags title="Top Rated" />
         </div>
         {/* image */}
-        <div className="overflow-hidden flex flex-col  justify-center relative min-h-44">
+        <div className="overflow-hidden flex flex-col  justify-center relative min-h-44 h-56 w-80">
           <img src={coverImg} alt="shop-image " className="w-96 object-cover h-56 " />
         </div>
 
