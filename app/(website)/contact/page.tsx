@@ -3,15 +3,19 @@ import Image from 'next/image';
 import React, { useState } from 'react';
 import axios from 'axios';
 import { formatDate } from '@/utils/FormatDate';
+import { toast } from 'react-toastify';
+import Loader from '@/components/shared/Loader';
 
 const ContactPage = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
   const [message, setMessage] = useState('');
+  const [showLoader, setShowLoader] = useState(false);
 
   const handleSubmit = async () => {
     try {
+      setShowLoader(true);
       const date = new Date();
       const jsonData = {
         name: name,
@@ -43,6 +47,11 @@ const ContactPage = () => {
         setPhone('');
       }
 
+      setShowLoader(false);
+
+      toast.success('Form submitted successfully', {
+        position: 'top-center',
+      });
       // Send query on whatsapp
       // const whatsappUrl = `https://api.whatsapp.com/send?phone=917340340679&text=Hello%20Markals%2C%0A${encodeURIComponent(
       //   `I am ${name} and I am looking for an agency to build my website.\nInfo about the website:\n\nMy Details\nEmail: ${email}\nPhone: ${phone}\n\nService Needed: ${service}\n\nAdditional Message: ${message}`,
@@ -50,6 +59,11 @@ const ContactPage = () => {
       // window.open(whatsappUrl, '_blank');
     } catch (error) {
       console.log(error);
+      toast.error('Some error occured', {
+        position: 'top-center',
+      });
+      console.log(error);
+      setShowLoader(false);
     }
   };
 
@@ -132,7 +146,7 @@ const ContactPage = () => {
           onClick={handleSubmit}
           className="mt-5 py-3 px-5 text-sm font-medium text-center text-white rounded-lg bg-primary-700 sm:w-fit hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
         >
-          Send message
+          SEND MESSAGE {showLoader && <Loader />}
         </button>
       </div>
       {/* right */}

@@ -63,6 +63,7 @@ const NearByStoresPage: React.FC<NearByStoresPageProps> = ({
                   <div className="">
                     <Image src={'/mkd-logo-dark.png'} width={30} height={30} alt="mkd-logo" />
                     <p className="text-lg font-semibold pt-1 ">{marker.name}</p>
+                    <p className="text-base font-semibold pt-1 ">{marker.desc}</p>
                     <Link href={`tel:${marker.phone}`}>
                       <p className="underline py-1 ">{marker.phone}</p>
                     </Link>

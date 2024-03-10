@@ -4,13 +4,13 @@ import NearByStoresPage from './NearbyStores';
 import Sidebar from './Sidebar';
 import axios from 'axios';
 import Loader from '@/components/shared/Loader';
+
 const NearByStores = () => {
   const [activeMarker, setActiveMarker] = useState<string | null>(null);
   const [markersData, setMarkersData] = useState();
-
   const [location, setLocation] = useState<{ lat: number; lng: number }>();
-  // getting the location of user
-  useEffect(() => {
+
+  const fetchLocation = () => {
     if ('geolocation' in navigator) {
       navigator.geolocation.getCurrentPosition(({ coords }) => {
         const { latitude, longitude } = coords;
@@ -18,9 +18,14 @@ const NearByStores = () => {
         setLocation({ lat: latitude, lng: longitude });
       });
     }
+  };
+
+  // Fetch location when the component mounts
+  useEffect(() => {
+    fetchLocation();
   }, []);
 
-  // getting shops data from Sheets
+  // Fetch shops data from Sheets
   const fetchData = async () => {
     const params = {
       apiKey: `${process.env.NEXT_PUBLIC_SHEETSON_API_KEY}`,
@@ -44,6 +49,7 @@ const NearByStores = () => {
   const handleActiveMarker = (markerId: string) => {
     setActiveMarker(markerId === activeMarker ? null : markerId);
   };
+
   return (
     <div className="flex flex-col lg:flex-row overflow-x-hidden w-screen">
       {markersData === undefined && (

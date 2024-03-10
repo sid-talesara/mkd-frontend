@@ -80,10 +80,13 @@ const RegisterForm = () => {
         setShopName('');
       }
       toast.success('Form submitted successfully', {
-        position: 'bottom-right',
+        position: 'top-center',
       });
       setShowLoader(false);
     } catch (error) {
+      toast.error('Some error occured', {
+        position: 'top-center',
+      });
       console.log(error);
     }
   };
@@ -261,7 +264,7 @@ const RegisterForm = () => {
           </button>
         </div>
         <ToastContainer
-          position="bottom-right"
+          position="top-center"
           autoClose={5000}
           hideProgressBar={false}
           newestOnTop={false}

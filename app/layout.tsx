@@ -9,7 +9,7 @@ const workSans = Work_Sans({ subsets: ['latin'] });
 
 // for SEO
 export const metadata: Metadata = {
-  title: 'Find mobile shops Near You in Jaipur – Mobile Ki Dukan',
+  title: 'Top Mobile Shops Near you - Mobile Ki Dukan',
   description:
     "Mobile ki Dukan, Rajasthan's No. 1 listing Platform for mobile shop owners, retailers, and mobile accessories sellers. Find addresses, phone numbers, reviews and ratings, photos, maps of mobile shops.",
   keywords: [

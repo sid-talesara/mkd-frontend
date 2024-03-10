@@ -12,6 +12,7 @@ import './styles.css';
 // import required modules
 import { Navigation, Pagination, Mousewheel, Keyboard } from 'swiper/modules';
 import Image from 'next/image';
+import Link from 'next/link';
 
 export default function Carousal() {
   return (
@@ -29,17 +30,35 @@ export default function Carousal() {
           className="mySwiper"
         >
           <SwiperSlide>
-            <Image src={'/slide1.png'} width={1500} height={10} alt="some" />
+            <Link href={'/register-your-business'}>
+              <Image src={'/slide-5.png'} width={1500} height={10} alt="some" />
+            </Link>
           </SwiperSlide>
           <SwiperSlide>
-            <Image src={'/slide2.png'} width={1500} height={10} alt="some" />
+            <Link href={'/nearby-stores'}>
+              <Image src={'/slide1.png'} width={1500} height={10} alt="some" />
+            </Link>
           </SwiperSlide>
           <SwiperSlide>
-            <Image src={'/slide3.png'} width={1500} height={10} alt="some" />
+            <Link href={'/nearby-stores'}>
+              <Image src={'/slide2.png'} width={1500} height={10} alt="some" />
+            </Link>
           </SwiperSlide>
           <SwiperSlide>
-            <Image src={'/slide4.png'} width={1500} height={10} alt="some" />
+            <Link href={'/nearby-stores'}>
+              <Image src={'/slide3.png'} width={1500} height={10} alt="some" />
+            </Link>
           </SwiperSlide>
+          <SwiperSlide>
+            <Link href={'/nearby-stores'}>
+              <Image src={'/slide4.png'} width={1500} height={10} alt="some" />
+            </Link>
+          </SwiperSlide>
+          {/* <SwiperSlide>
+            <Link href={'/start-business'}>
+              <Image src={'/slide-6.png'} width={1500} height={10} alt="some" />
+            </Link>
+          </SwiperSlide> */}
         </Swiper>
       </div>
       <div className="h-[80vh] md:hidden ">
@@ -55,17 +74,35 @@ export default function Carousal() {
           className="mySwiper"
         >
           <SwiperSlide>
-            <Image src={'/mobile-slide1.png'} width={1500} height={10} alt="some" />
+            <Link href={'/nearby-stores'}>
+              <Image src={'/mobile-slide1.png'} width={1500} height={10} alt="some" />
+            </Link>
           </SwiperSlide>
           <SwiperSlide>
-            <Image src={'/mobile-slide2.png'} width={1500} height={10} alt="some" />
+            <Link href={'/nearby-stores'}>
+              <Image src={'/mobile-slide2.png'} width={1500} height={10} alt="some" />
+            </Link>
           </SwiperSlide>
           <SwiperSlide>
-            <Image src={'/mobile-slide3.png'} width={1500} height={10} alt="some" />
+            <Link href={'/register-your-business'}>
+              <Image src={'/mobile-slide-5.png'} width={1500} height={10} alt="some" />
+            </Link>
           </SwiperSlide>
           <SwiperSlide>
-            <Image src={'/mobile-slide4.png'} width={1500} height={10} alt="some" />
+            <Link href={'/nearby-stores'}>
+              <Image src={'/mobile-slide3.png'} width={1500} height={10} alt="some" />
+            </Link>
           </SwiperSlide>
+          <SwiperSlide>
+            <Link href={'/nearby-stores'}>
+              <Image src={'/mobile-slide4.png'} width={1500} height={10} alt="some" />
+            </Link>
+          </SwiperSlide>
+          {/* <SwiperSlide>
+            <Link href={'/start-business'}>
+              <Image src={'/mobile-slide-6.png'} width={1500} height={10} alt="some" />
+            </Link>
+          </SwiperSlide> */}
         </Swiper>
       </div>
     </div>

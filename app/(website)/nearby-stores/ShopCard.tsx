@@ -25,6 +25,14 @@ const ShopCard: React.FC<Props> = ({ handleActiveMarker, markersData }) => {
     location.name.toLowerCase().includes(searchInput.toLowerCase()),
   );
 
+  function trimAndEllipsis(str: string) {
+    if (str.length > 20) {
+      return str.substring(0, 25) + '...';
+    } else {
+      return str;
+    }
+  }
+
   return (
     <div className="flex flex-col w-full lg:w-80 gap-2 px-4  justify-center ">
       <SearchBar handleSearchInput={handleSearchInput} />
@@ -38,7 +46,8 @@ const ShopCard: React.FC<Props> = ({ handleActiveMarker, markersData }) => {
         >
           {/* <div className="absolute top-2 right-2 z-10">{location.id % 2 !== 0 && <CardTags title="Top Rated" />}</div> */}
           <p className="text-xl">{location.name}</p>
-          <p className="text-sm">{location.address}</p>
+          {location.desc !== '-' && <p className="text-sm">{trimAndEllipsis(location.desc)}</p>}
+          <p className="text-sm">{trimAndEllipsis(location.address)}</p>
           {/* <p className="py-2 text-yellow-500 flex gap-1">
             {Array.from({ length: location.rating }).map((_, index) => (
               <FaStar key={index} />

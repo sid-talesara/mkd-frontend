@@ -4,7 +4,7 @@ import axios from 'axios';
 import { formatDate } from '@/utils/FormatDate';
 import Loader from '@/components/shared/Loader';
 import { v4 as uuidv4 } from 'uuid';
-import { ToastContainer } from 'react-toastify';
+import { ToastContainer, toast } from 'react-toastify';
 const OnTheGoPage = () => {
   const [name, setName] = useState('');
   const [shopName, setShopName] = useState('');
@@ -55,12 +55,15 @@ const OnTheGoPage = () => {
       }
 
       setShowLoader(false);
-      // Send query on whatsapp
-      // const whatsappUrl = `https://api.whatsapp.com/send?phone=917340340679&text=Hello%20Markals%2C%0A${encodeURIComponent(
-      //   `I am ${name} and I am looking for an agency to build my website.\nInfo about the website:\n\nMy Details\nEmail: ${email}\nPhone: ${phone}\n\nService Needed: ${service}\n\nAdditional Message: ${message}`,
-      // )}`;
-      // window.open(whatsappUrl, '_blank');
+
+      toast.success('Form submitted successfully', {
+        position: 'top-center',
+      });
+      setShowLoader(false);
     } catch (error) {
+      toast.error('Some error occured', {
+        position: 'top-center',
+      });
       console.log(error);
     }
   };
@@ -199,7 +202,7 @@ const OnTheGoPage = () => {
           </button>
         </div>
         <ToastContainer
-          position="bottom-right"
+          position="top-center"
           autoClose={5000}
           hideProgressBar={false}
           newestOnTop={false}

@@ -33,7 +33,7 @@ export const metadata: Metadata = {
       "Join India's first mobile accessories retail program with branded inventory stocked e-carts at low investment. Get logistics, supplies, marketing support from Mobile Ki Dukan to run your own wheels business profitably.",
     images: [
       {
-        url: 'https://i.imgur.com/lKKAKKM.png',
+        url: 'https://i.imgur.com/ahEaGlm.png',
         width: 1200,
         height: 630,
         alt: ' Start your mobile accessories business with us today – Mobile Ki Dukan',

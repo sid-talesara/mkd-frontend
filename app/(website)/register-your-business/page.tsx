@@ -29,7 +29,7 @@ export const metadata: Metadata = {
       "Take your mobile ki dukan online with us. Get discovered by 1000s of nearby buyers searching for mobile phones, accessories and repair services. Joining Mobile Ki Dukan instantly increases your store's visibility, credibility and trust among local customers.",
     images: [
       {
-        url: 'https://i.imgur.com/WsgwKj8.png',
+        url: 'https://i.imgur.com/NMaenI4.png',
         width: 1200,
         height: 630,
         alt: ' List your mobile store with us – Mobile Ki Dukan',

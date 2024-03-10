@@ -9,6 +9,7 @@ import { SlBookOpen } from 'react-icons/sl';
 import Button from '../Buttons/Button';
 const NavbarComponent = () => {
   const [showMenu, setShowMenu] = useState(false);
+
   return (
     <div className=" top-0 z-20 relative">
       {/* Navbar-1 */}
@@ -54,7 +55,12 @@ const NavbarComponent = () => {
                   <p>About Us</p>
                 </Link>
               </li>
-              <li className="relative" onClick={() => setShowMenu(!showMenu)}>
+              <li
+                className="relative"
+                onClick={() => setShowMenu(!showMenu)}
+                onMouseEnter={() => setShowMenu(true)}
+                onMouseLeave={() => setShowMenu(false)}
+              >
                 <p
                   onClick={() => setShowMenu(!showMenu)}
                   className="text-base   dark:text-white hover:underline flex gap-3 items-center z-[10000]"
