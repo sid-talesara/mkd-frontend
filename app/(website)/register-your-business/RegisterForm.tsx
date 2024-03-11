@@ -173,7 +173,7 @@ const RegisterForm = () => {
               />
             </div>
 
-            <LoadScript googleMapsApiKey="AIzaSyAHS2yEzSeJN_wDE44lgL7v878fY7jNl9w" libraries={['places']}>
+            <LoadScript googleMapsApiKey={process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || ''} libraries={['places']}>
               <StandaloneSearchBox onLoad={(ref) => (inputRef.current = ref)} onPlacesChanged={handlePlaceChanged}>
                 {/* Shop Name */}
                 <div>
