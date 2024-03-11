@@ -1,10 +1,11 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import axios from 'axios';
 import { formatDate } from '@/utils/FormatDate';
 import { v4 as uuidv4 } from 'uuid';
 import { ToastContainer, toast } from 'react-toastify';
 import Loader from '@/components/shared/Loader';
+import { LoadScript, StandaloneSearchBox } from '@react-google-maps/api';
 const RegisterForm = () => {
   const [name, setName] = useState('');
   const [shopName, setShopName] = useState('');
@@ -16,43 +17,40 @@ const RegisterForm = () => {
   const [shopAddress, setShopAddress] = useState('');
   const [desc, setDesc] = useState('');
   const [showLoader, setShowLoader] = useState(false);
+  const [coordinatesData, setCoordinatesData] = useState({ lat: '', lng: '' });
+  const [userRating, setUserRating] = useState('');
+  const inputRef = useRef<any>();
 
-  function extractCoordinates(url: string) {
-    // This regex is designed to match the latitude and longitude in the URL
-    const regex = /@([\-0-9\.]+),([\-0-9\.]+)/;
-    const matches = url.match(regex);
-
-    if (matches && matches.length >= 3) {
-      const latitude = parseFloat(matches[1]);
-      const longitude = parseFloat(matches[2]);
-      return { latitude, longitude };
-    } else {
-      // If no match is found, return null or an appropriate response
-      return null;
+  const handlePlaceChanged = () => {
+    const [place] = inputRef.current.getPlaces();
+    if (place) {
+      setShopAddress(place.formatted_address);
+      setShopName(place.name);
+      const lat = place.geometry.location.lat();
+      const lng = place.geometry.location.lng();
+      setCoordinatesData({ lat, lng });
     }
-  }
+  };
 
   const handleSubmit = async () => {
     try {
       setShowLoader(true);
       const date = new Date();
-      const coordinatesData = extractCoordinates(shopLocation);
-      if (coordinatesData === null) return;
+
       const jsonData = {
         id: uuidv4(),
-        name: name,
+        name: name || 'Computer Generated',
         shop: shopName,
         address: shopAddress,
         desc: desc,
-        shopLocation: shopLocation,
-        lat: coordinatesData.latitude,
-        lng: coordinatesData.longitude,
+        shopLocation: shopLocation || 'Computer Generated',
+        lat: coordinatesData?.lat,
+        lng: coordinatesData?.lng,
         gstNum: gstNum,
         email: email,
         phone: phone,
-        message: message,
+        // message: message,
         contacted: 'not-contacted',
-
         isValid: false,
         date: formatDate(date.toISOString()),
       };
@@ -69,7 +67,7 @@ const RegisterForm = () => {
       );
       if (res.status === 201) {
         setEmail('');
-        setMessage('');
+        // setMessage('');
         setName('');
         setPhone('');
         setDesc('');
@@ -99,6 +97,8 @@ const RegisterForm = () => {
             <span className="font-bold">REGISTER </span>
             YOUR BUSINESS
           </h3>
+
+          {/* <StandaloneSearchBox /> */}
           {/* <p className="mb-8 lg:mb-16 font-light text-center text-gray-500 dark:text-gray-400 sm:text-xl">
             Register Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam, voluptas?
           </p> */}
@@ -124,23 +124,6 @@ const RegisterForm = () => {
               />
             </div>
 
-            {/* Shop Name */}
-            <div>
-              <label htmlFor="shopname" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
-                Shop Name
-                <span> *</span>
-              </label>
-              <input
-                type="text"
-                id="shopname"
-                value={shopName}
-                onChange={(e) => setShopName(e.target.value)}
-                className="block p-3 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 shadow-sm focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light"
-                placeholder="Shop Name"
-                required
-              />
-            </div>
-
             {/* GST Number */}
             <div>
               <label htmlFor="gst" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
@@ -154,56 +137,6 @@ const RegisterForm = () => {
                 onChange={(e) => setGstNum(e.target.value)}
                 className="block p-3 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 shadow-sm focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light"
                 placeholder="08AAAAA0000A1Z5"
-                required
-              />
-            </div>
-
-            {/* Shop Location */}
-            <div>
-              <label htmlFor="subject" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
-                Shop Location
-                <span> *</span>
-              </label>
-              <input
-                type="text"
-                id="location"
-                value={shopLocation}
-                onChange={(e) => setShopLocation(e.target.value)}
-                className="block p-3 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 shadow-sm focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light"
-                placeholder="Google Location Link"
-                required
-              />
-            </div>
-
-            {/* Shop Address */}
-            <div>
-              <label htmlFor="shopaddress" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
-                Shop Address
-                <span> *</span>
-              </label>
-              <input
-                type="text"
-                id="shopaddress"
-                value={shopAddress}
-                onChange={(e) => setShopAddress(e.target.value)}
-                className="block p-3 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 shadow-sm focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light"
-                placeholder="Shop Address"
-                required
-              />
-            </div>
-            {/* Shop Description */}
-            <div>
-              <label htmlFor="shopdesc" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
-                Shop Description
-                <span> *</span>
-              </label>
-              <input
-                type="text"
-                id="shopdesc"
-                value={desc}
-                onChange={(e) => setDesc(e.target.value)}
-                className="block p-3 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 shadow-sm focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light"
-                placeholder="About shop "
                 required
               />
             </div>
@@ -240,7 +173,44 @@ const RegisterForm = () => {
               />
             </div>
 
-            {/* message */}
+            <LoadScript googleMapsApiKey="AIzaSyAHS2yEzSeJN_wDE44lgL7v878fY7jNl9w" libraries={['places']}>
+              <StandaloneSearchBox onLoad={(ref) => (inputRef.current = ref)} onPlacesChanged={handlePlaceChanged}>
+                {/* Shop Name */}
+                <div>
+                  <label htmlFor="place" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                    Place
+                    <span> *</span>
+                  </label>
+                  <input
+                    type="text"
+                    id="place"
+                    // value={shopName}
+                    // onChange={(e) => setShopName(e.target.value)}
+                    className="block p-3 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 shadow-sm focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light"
+                    placeholder="Shop Name"
+                  />
+                </div>
+              </StandaloneSearchBox>
+            </LoadScript>
+
+            {/* Shop Description */}
+            <div>
+              <label htmlFor="shopdesc" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                Shop Description
+                <span> *</span>
+              </label>
+              <input
+                type="text"
+                id="shopdesc"
+                value={desc}
+                onChange={(e) => setDesc(e.target.value)}
+                className="block p-3 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 shadow-sm focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light"
+                placeholder="About shop "
+                required
+              />
+            </div>
+
+            {/* message
             <div className="sm:col-span-2">
               <label htmlFor="message" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400">
                 Your message
@@ -253,7 +223,7 @@ const RegisterForm = () => {
                 className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg shadow-sm border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                 placeholder="Leave a comment..."
               ></textarea>
-            </div>
+            </div> */}
           </form>
 
           <button
