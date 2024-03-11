@@ -39,6 +39,7 @@ const NearByStoresPage: React.FC<NearByStoresPageProps> = ({
     return <div>Loading maps</div>;
   }
 
+  const validMarkers = markersData.filter((location) => location.isValid === 'TRUE');
   return (
     <div style={{ height: '100vh', width: '100%' }}>
       {isLoaded ? (
@@ -48,7 +49,7 @@ const NearByStoresPage: React.FC<NearByStoresPageProps> = ({
           onClick={() => setActiveMarker(null)}
           mapContainerStyle={{ width: '100%', height: '100vh' }}
         >
-          {markersData.map((marker: Marker) => (
+          {validMarkers.map((marker: Marker) => (
             <MarkerF
               key={marker.id}
               position={{ lat: parseFloat(marker.lat), lng: parseFloat(marker.lng) }} // Conversion to number
