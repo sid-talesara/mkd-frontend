@@ -32,10 +32,12 @@ const NearByStores = () => {
       spreadsheetId: `${process.env.NEXT_PUBLIC_SHEETID}`,
     };
 
-    const url = `${process.env.NEXT_PUBLIC_SHEETSON_URL}/v2/sheets/${process.env.NEXT_PUBLIC_SHEETNAME_2}`;
+    const url = `${process.env.NEXT_PUBLIC_SHEETSON_URL}/v2/sheets/${process.env.NEXT_PUBLIC_SHEETNAME_2}?limit=100`;
 
     try {
       const response = await axios.get(url, { params });
+      console.log('----------------------------');
+      console.log(response.data);
       setMarkersData(response.data.results);
     } catch (error) {
       console.error('Error fetching data:', error);
