@@ -4,6 +4,7 @@ import NearByStoresPage from './NearbyStores';
 import Sidebar from './Sidebar';
 import axios from 'axios';
 import Loader from '@/components/shared/Loader';
+import NearbyData from './NearbyData';
 
 const NearByStores = () => {
   const [activeMarker, setActiveMarker] = useState<string | null>(null);
@@ -53,26 +54,29 @@ const NearByStores = () => {
   };
 
   return (
-    <div className="flex flex-col lg:flex-row overflow-x-hidden w-screen">
+    <div>
       {markersData === undefined && (
         <div className="h-screen w-screen flex justify-center items-center">
           <Loader />
         </div>
       )}
-      <div className="w-screen lg:w-96 sideBar overflow-x-hidden">
-        {markersData !== undefined && <Sidebar handleActiveMarker={handleActiveMarker} markersData={markersData} />}
+      <div className="flex flex-col lg:flex-row overflow-x-hidden w-screen">
+        <div className="w-screen lg:w-96 sideBar overflow-x-hidden ">
+          {markersData !== undefined && <Sidebar handleActiveMarker={handleActiveMarker} markersData={markersData} />}
+        </div>
+        <div className=" content lg:w-full">
+          {location !== undefined && markersData !== undefined && (
+            <NearByStoresPage
+              location={location}
+              activeMarker={activeMarker}
+              setActiveMarker={setActiveMarker}
+              handleActiveMarker={handleActiveMarker}
+              markersData={markersData}
+            />
+          )}
+        </div>
       </div>
-      <div className=" content lg:w-full">
-        {location !== undefined && markersData !== undefined && (
-          <NearByStoresPage
-            location={location}
-            activeMarker={activeMarker}
-            setActiveMarker={setActiveMarker}
-            handleActiveMarker={handleActiveMarker}
-            markersData={markersData}
-          />
-        )}
-      </div>
+      <NearbyData />
     </div>
   );
 };

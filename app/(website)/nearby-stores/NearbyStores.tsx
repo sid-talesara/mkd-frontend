@@ -41,7 +41,7 @@ const NearByStoresPage: React.FC<NearByStoresPageProps> = ({
 
   const validMarkers = markersData.filter((location) => location.isValid === 'TRUE');
   return (
-    <div style={{ height: '100vh', width: '100%' }}>
+    <div style={{ height: '80vh', width: '100%' }}>
       {isLoaded ? (
         <GoogleMap
           center={{ lat: location.lat, lng: location.lng }}

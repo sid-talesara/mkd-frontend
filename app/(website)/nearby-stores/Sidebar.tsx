@@ -8,7 +8,7 @@ interface SidebarProps {
 
 const Sidebar: FC<SidebarProps> = ({ handleActiveMarker, markersData }) => {
   return (
-    <div className="w-full lg:w-96 bg-mkd-light h-96 lg:h-screen overflow-y-auto z-20">
+    <div className="w-full lg:w-96 bg-mkd-light h-[65vh] lg:h-screen overflow-y-auto z-20">
       <div>
         <ShopCard handleActiveMarker={handleActiveMarker} markersData={markersData} />
       </div>

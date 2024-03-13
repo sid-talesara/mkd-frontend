@@ -33,7 +33,7 @@ const postPage = async ({ params }: paramsType) => {
   const post = await getSingleBlogPostBySlug(params.slug);
 
   return (
-    <article className="max-w-screen-lg mx-auto py-8 px-4">
+    <article className="max-w-screen-lg mx-auto py-8 px-8">
       {/* cover Img */}
       <Image
         src={post.metadata.coverImg}

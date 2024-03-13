@@ -5,6 +5,7 @@ import axios from 'axios';
 import { formatDate } from '@/utils/FormatDate';
 import { toast } from 'react-toastify';
 import Loader from '@/components/shared/Loader';
+import Modal from '@/components/shared/Modal/Modal';
 
 const ContactPage = () => {
   const [name, setName] = useState('');
@@ -12,6 +13,7 @@ const ContactPage = () => {
   const [phone, setPhone] = useState('');
   const [message, setMessage] = useState('');
   const [showLoader, setShowLoader] = useState(false);
+  const [showModal, setShowModal] = useState(false);
 
   const handleSubmit = async () => {
     try {
@@ -47,6 +49,7 @@ const ContactPage = () => {
         setPhone('');
       }
 
+      setShowModal(true);
       setShowLoader(false);
 
       toast.success('Form submitted successfully', {
@@ -153,6 +156,7 @@ const ContactPage = () => {
       <div className="py-8 lg:py-16 px-4 mx-auto max-w-screen-md">
         <Image src={'/about-hero.png'} alt={'something'} className=" object-cover " width={500} height={200} />
       </div>
+      <Modal showModal={showModal} setShowModal={setShowModal} />
     </div>
   );
 };

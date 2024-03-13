@@ -17,7 +17,7 @@ const AboutHero = (props: Props) => {
                 <span className="font-bold">ABOUT </span>
                 MOBILE KI DUKAN
               </h3>
-              <h5 className="text-2xl py-4 font-semibold">India's fastest-growing next generation mobile Shops.</h5>
+              <h5 className="text-2xl py-4 font-semibold">India's fastest-growing next generation mobile shop.</h5>
               <p className="text-base pb-6 text-justify">
                 Mobile Ki Dukan, founded in 2019 is Jaipur, Rajasthan's premier next-generation mobile shop, devoted
                 solely to mobile shop owners in India offering to extend their reach and enhance walk-in traffic.

@@ -6,7 +6,7 @@ import React from 'react';
 const BlogsCards = ({ id, coverImg, title, description, date, slug }: BlogCardData) => {
   return (
     <Link href={`blogs/${slug}`}>
-      <div className="w-[550px] px-5 cursor-pointer border p-4 rounded-xl">
+      <div className="w-96 px-5 cursor-pointer border p-4 rounded-xl">
         <div className=" overflow-hidden rounded-xl ">
           <Image src={coverImg} className=" h-64 object-cover " width={1000} height={500} alt="blogs-cover" />
         </div>

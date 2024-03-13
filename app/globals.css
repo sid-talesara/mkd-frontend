@@ -97,7 +97,7 @@
     @apply bg-gray-900 text-white font-mono text-sm p-3 rounded overflow-x-auto;
   }
   .markdown img {
-    @apply mx-auto my-4;
+    @apply mx-auto my-4 md:w-1/2;
   }
   .markdown table {
     @apply min-w-full divide-y divide-gray-200 table-auto mb-4;

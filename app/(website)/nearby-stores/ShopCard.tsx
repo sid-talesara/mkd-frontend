@@ -34,7 +34,7 @@ const ShopCard: React.FC<Props> = ({ handleActiveMarker, markersData }) => {
   }
 
   return (
-    <div className="flex flex-col w-full lg:w-80 gap-2 px-4  justify-center ">
+    <div className="py-24 md:py-4 flex flex-col w-full lg:w-80 gap-2 px-4  justify-center ">
       <SearchBar handleSearchInput={handleSearchInput} />
       {filteredMarkers.map((location) => (
         <div

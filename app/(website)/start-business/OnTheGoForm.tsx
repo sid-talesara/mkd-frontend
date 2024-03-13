@@ -5,6 +5,7 @@ import { formatDate } from '@/utils/FormatDate';
 import Loader from '@/components/shared/Loader';
 import { v4 as uuidv4 } from 'uuid';
 import { ToastContainer, toast } from 'react-toastify';
+import Modal from '@/components/shared/Modal/Modal';
 const OnTheGoPage = () => {
   const [name, setName] = useState('');
   const [shopName, setShopName] = useState('');
@@ -13,6 +14,7 @@ const OnTheGoPage = () => {
   const [phone, setPhone] = useState('');
   const [message, setMessage] = useState('');
   const [showLoader, setShowLoader] = useState(false);
+  const [showModal, setShowModal] = useState(false);
 
   const handleSubmit = async () => {
     try {
@@ -54,11 +56,9 @@ const OnTheGoPage = () => {
         setMessage('');
       }
 
+      setShowModal(true);
       setShowLoader(false);
 
-      toast.success('Form submitted successfully', {
-        position: 'top-center',
-      });
       setShowLoader(false);
     } catch (error) {
       toast.error('Some error occured', {
@@ -201,18 +201,7 @@ const OnTheGoPage = () => {
             SEND MESSAGE {showLoader && <Loader />}
           </button>
         </div>
-        <ToastContainer
-          position="top-center"
-          autoClose={5000}
-          hideProgressBar={false}
-          newestOnTop={false}
-          closeOnClick
-          rtl={false}
-          pauseOnFocusLoss
-          draggable
-          pauseOnHover
-          theme="light"
-        />
+        <Modal showModal={showModal} setShowModal={setShowModal} />
       </section>
     </div>
   );

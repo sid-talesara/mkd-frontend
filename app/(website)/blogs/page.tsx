@@ -5,7 +5,7 @@ import BlogsPage from './BlogsPage';
 
 const page = () => {
   return (
-    <div>
+    <div className="px-4">
       <BlogsPage />
     </div>
   );

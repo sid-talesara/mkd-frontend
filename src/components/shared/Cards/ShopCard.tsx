@@ -18,8 +18,8 @@ const ShopCard = ({ shop }: { shop: ShopCardsProps }) => {
   const transformedAddress = trimAndEllipsis(address);
 
   return (
-    <Link href={shopLocation} target="_blank">
-      <div className="min-w-64 w-fit   rounded-xl relative m-1 mb-6 border-2 hover:border-gray-500  max-w-96 overflow-hidden hover:shadow-lg transition-all duration-300">
+    <Link href={'/nearby-stores'} target="_blank">
+      <div className="min-w-60 w-fit   rounded-xl relative m-1 mb-6 border-2 hover:border-gray-500  max-w-72 overflow-hidden hover:shadow-lg transition-all duration-300">
         {/* tags */}
         <div className="absolute top-2 right-2 z-10">
           <CardTags title="Top Rated" />

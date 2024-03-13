@@ -32,9 +32,8 @@ const AboutSection = ({ type }: { type: string }) => {
             <p className="text-base pb-6 text-justify">
               I feel glad Mobile Ki Dukan’s vision taking shape in addressing real challenges for Rajasthan's mobile
               ecosystem participants using practical technology intervention. But this is just the beginning as we stay
-              committed to keep evolving&nbsp;
-              <span className="font-semibold">innovative win-win program partnerships</span>
-              sustaining inclusive progress.&nbsp;
+              committed to keep evolving&nbsp; innovative win-win program partnerships sustaining inclusive
+              progress.&nbsp;
             </p>
           </div>
           {/* right */}

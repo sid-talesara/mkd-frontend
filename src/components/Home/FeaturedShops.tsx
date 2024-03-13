@@ -51,6 +51,7 @@ const FeaturedShops = () => {
               pagination={true}
               mousewheel={true}
               keyboard={true}
+              autoplay={true}
               loop={true}
               modules={[Navigation, Pagination, Mousewheel, Keyboard]}
               className="mySwiper "

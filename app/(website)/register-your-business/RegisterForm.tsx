@@ -6,6 +6,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { ToastContainer, toast } from 'react-toastify';
 import Loader from '@/components/shared/Loader';
 import { LoadScript, StandaloneSearchBox } from '@react-google-maps/api';
+import Modal from '@/components/shared/Modal/Modal';
 const RegisterForm = () => {
   const [name, setName] = useState('');
   const [shopName, setShopName] = useState('');
@@ -20,6 +21,7 @@ const RegisterForm = () => {
   const [coordinatesData, setCoordinatesData] = useState({ lat: '', lng: '' });
   const [userRating, setUserRating] = useState('');
   const inputRef = useRef<any>();
+  const [showModal, setShowModal] = useState(false);
 
   const handlePlaceChanged = () => {
     const [place] = inputRef.current.getPlaces();
@@ -77,9 +79,8 @@ const RegisterForm = () => {
         setShopLocation('');
         setShopName('');
       }
-      toast.success('Form submitted successfully', {
-        position: 'top-center',
-      });
+
+      setShowModal(true);
       setShowLoader(false);
     } catch (error) {
       toast.error('Some error occured', {
@@ -233,18 +234,8 @@ const RegisterForm = () => {
             SEND MESSAGE {showLoader && <Loader />}
           </button>
         </div>
-        <ToastContainer
-          position="top-center"
-          autoClose={5000}
-          hideProgressBar={false}
-          newestOnTop={false}
-          closeOnClick
-          rtl={false}
-          pauseOnFocusLoss
-          draggable
-          pauseOnHover
-          theme="light"
-        />
+
+        <Modal showModal={showModal} setShowModal={setShowModal} />
       </section>
     </div>
   );
