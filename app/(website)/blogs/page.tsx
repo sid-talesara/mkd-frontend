@@ -1,9 +1,9 @@
 import React from 'react';
+
+import Link from 'next/link';
 import BlogsPage from './BlogsPage';
 
-type Props = {};
-
-const page = (props: Props) => {
+const page = () => {
   return (
     <div>
       <BlogsPage />

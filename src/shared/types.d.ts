@@ -1,14 +1,12 @@
-// export interface ShopCardsProps {
-//   tagTitle?: string;
-//   imageLink: string;
-//   imageAltDesc?: string;
-//   shopName?: string;
-//   location: string;
-//   link: string;
-//   ratingNum: number;
-//   rating?: number;
-//   phoneNumber?: string;
-// }
+export interface BlogCardData {
+  id: string;
+  coverImg: string;
+  title: string;
+  tags: string[];
+  description: string;
+  date: string;
+  slug: string;
+}
 
 export interface ShopCardsProps {
   address: string;
