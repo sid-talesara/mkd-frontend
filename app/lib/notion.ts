@@ -62,7 +62,7 @@ const getPageMetaData = (post: any) => {
 };
 
 // getting all the blogs
-export const getAllPublished = React.cache(async () => {
+export const getAllPublished = async () => {
   const posts = await notion.databases.query({
     database_id: process.env.NEXT_PUBLIC_NOTION_DB_ID!,
     filter: {
@@ -84,7 +84,7 @@ export const getAllPublished = React.cache(async () => {
   return allPosts.map((post: any) => {
     return getPageMetaData(post);
   });
-});
+};
 
 // getting post by the slug
 export const getSingleBlogPostBySlug = React.cache(async (slug: string) => {
