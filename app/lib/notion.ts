@@ -62,13 +62,13 @@ const getPageMetaData = (post: any) => {
 };
 
 // getting all the blogs
-export const getAllPublished = async () => {
+export const getAllPublished = async (live: boolean) => {
   const posts = await notion.databases.query({
     database_id: process.env.NEXT_PUBLIC_NOTION_DB_ID,
     filter: {
       property: 'Published',
       checkbox: {
-        equals: true,
+        equals: live,
       },
     },
     sorts: [

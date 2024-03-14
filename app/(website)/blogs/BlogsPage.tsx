@@ -6,7 +6,7 @@ import BlogsCards from './BlogsCards';
 import { BlogCardData } from '@/shared/types';
 
 const BlogsPage = async () => {
-  const posts = await getAllPublished();
+  const posts = await getAllPublished(true);
   console.log(posts);
   return (
     <>
