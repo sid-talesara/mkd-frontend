@@ -1,4 +1,5 @@
 const { Client } = require('@notionhq/client');
+import { cache } from 'react';
 const notion = new Client({
   auth: process.env.NEXT_PUBLIC_NOTION_TOKEN,
 });
@@ -9,8 +10,6 @@ interface tagsType {
   name: string;
   color: string;
 }
-
-const database_id = process.env.NEXT_PUBLIC_NOTION_DB_ID;
 
 function getToday(datestring: string) {
   const months = [
@@ -63,9 +62,9 @@ const getPageMetaData = (post: any) => {
 };
 
 // getting all the blogs
-export const getAllPublished = async () => {
+export const getAllPublished = cache(async () => {
   const posts = await notion.databases.query({
-    database_id,
+    database_id: process.env.NEXT_PUBLIC_NOTION_DB_ID,
     filter: {
       property: 'Published',
       checkbox: {
@@ -85,12 +84,12 @@ export const getAllPublished = async () => {
   return allPosts.map((post: any) => {
     return getPageMetaData(post);
   });
-};
+});
 
 // getting post by the slug
 export const getSingleBlogPostBySlug = async (slug: string) => {
   const response = await notion.databases.query({
-    database_id,
+    database_id: process.env.NEXT_PUBLIC_NOTION_DB_ID,
     filter: {
       property: 'Slug',
       formula: {

@@ -4,6 +4,7 @@ import BlogsHero from './BlogsHero';
 import { getAllPublished } from '../../lib/notion';
 import BlogsCards from './BlogsCards';
 import { BlogCardData } from '@/shared/types';
+export const revalidate = 10;
 const BlogsPage = async () => {
   const posts = await getAllPublished();
   console.log(posts);
