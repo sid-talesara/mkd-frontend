@@ -63,7 +63,7 @@ const getPageMetaData = (post: any) => {
 };
 
 // getting all the blogs
-export const getAllPublished = React.cache(async (number: number) => {
+export const getAllPublished = React.cache(async () => {
   const posts = await notion.databases.query({
     database_id: process.env.NEXT_PUBLIC_NOTION_DB_ID!,
     filter: {
@@ -81,7 +81,7 @@ export const getAllPublished = React.cache(async (number: number) => {
   });
 
   const allPosts = posts.results;
-  console.log(number);
+
   return allPosts.map((post: any) => {
     return getPageMetaData(post);
   });
