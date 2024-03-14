@@ -1,5 +1,6 @@
+import 'server-only';
+import React from 'react';
 const { Client } = require('@notionhq/client');
-import { cache } from 'react';
 const notion = new Client({
   auth: process.env.NEXT_PUBLIC_NOTION_TOKEN,
 });
@@ -62,13 +63,13 @@ const getPageMetaData = (post: any) => {
 };
 
 // getting all the blogs
-export const getAllPublished = async (live: boolean) => {
+export const getAllPublished = React.cache(async () => {
   const posts = await notion.databases.query({
     database_id: process.env.NEXT_PUBLIC_NOTION_DB_ID,
     filter: {
       property: 'Published',
       checkbox: {
-        equals: live,
+        equals: true,
       },
     },
     sorts: [
@@ -84,10 +85,10 @@ export const getAllPublished = async (live: boolean) => {
   return allPosts.map((post: any) => {
     return getPageMetaData(post);
   });
-};
+});
 
 // getting post by the slug
-export const getSingleBlogPostBySlug = async (slug: string) => {
+export const getSingleBlogPostBySlug = React.cache(async (slug: string) => {
   const response = await notion.databases.query({
     database_id: process.env.NEXT_PUBLIC_NOTION_DB_ID,
     filter: {
@@ -109,4 +110,4 @@ export const getSingleBlogPostBySlug = async (slug: string) => {
     metadata,
     markdown: mdString,
   };
-};
+});

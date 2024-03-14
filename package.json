@@ -12,6 +12,9 @@
   },
   "dependencies": {
     "@googlemaps/react-wrapper": "^1.1.35",
+    "@notion-render/bookmark-plugin": "^0.0.2",
+    "@notion-render/client": "^0.0.2",
+    "@notion-render/hljs-plugin": "^0.0.2",
     "@notionhq/client": "^2.2.14",
     "@react-google-maps/api": "^2.19.3",
     "axios": "^1.6.7",
