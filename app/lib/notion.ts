@@ -1,4 +1,3 @@
-import 'server-only';
 import React from 'react';
 const { Client } = require('@notionhq/client');
 const notion = new Client({
