@@ -6,7 +6,7 @@ export async function GET(request: NextRequest) {
     const posts = await getAllPublished();
     return new NextResponse(
       JSON.stringify({
-        success: 'Product added successfully',
+        success: 'Data fetched successfully',
         status: true,
         posts: posts,
       }),
@@ -14,6 +14,8 @@ export async function GET(request: NextRequest) {
         status: 200, // OK status
         headers: {
           'Content-Type': 'application/json',
+          // Disable caching for this response
+          'Cache-Control': 'no-store, max-age=0',
         },
       },
     );
