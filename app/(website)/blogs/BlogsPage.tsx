@@ -5,8 +5,12 @@ import { getAllPublished } from '../../lib/notion';
 import BlogsCards from './BlogsCards';
 import { BlogCardData } from '@/shared/types';
 
+function getRandomInt(max: number) {
+  return Math.floor(Math.random() * Math.floor(max));
+}
 const BlogsPage = async () => {
-  const posts = await getAllPublished();
+  const randomNumber = getRandomInt(10);
+  const posts = await getAllPublished(randomNumber);
   console.log(posts);
   return (
     <>
