@@ -1,18 +1,26 @@
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 import { getAllPublished } from '../../lib/notion';
 
-export async function GET(request: { json: () => any }) {
+export async function GET(request: NextRequest) {
   try {
     const posts = await getAllPublished();
-    return NextResponse.json({
-      success: 'Product added successfully',
-      status: true,
-      posts: posts,
-    });
+    return new NextResponse(
+      JSON.stringify({
+        success: 'Product added successfully',
+        status: true,
+        posts: posts,
+      }),
+      {
+        status: 200, // OK status
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      },
+    );
   } catch (error) {
-    console.error('Error creating product:', error);
-    return new Response(JSON.stringify({ error: 'Failed to create product' }), {
-      status: 500,
+    console.error('Error fetching posts:', error);
+    return new NextResponse(JSON.stringify({ error: 'Failed to fetch posts' }), {
+      status: 500, // Internal Server Error
       headers: {
         'Content-Type': 'application/json',
       },
