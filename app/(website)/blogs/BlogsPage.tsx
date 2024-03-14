@@ -11,7 +11,7 @@ const BlogsPage = () => {
   const fetchData = async () => {
     try {
       setLoading(true); // Set loading to true when the fetch starts
-      const response = await fetch('/api/get-all-posts');
+      const response = await fetch('/api/get-all-posts', { next: { revalidate: 60 } });
       if (!response.ok) {
         throw new Error('Network response was not ok');
       }
