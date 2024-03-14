@@ -12,7 +12,7 @@ const BlogsPage = () => {
   const fetchData = async () => {
     try {
       setLoading(true); // Set loading to true when the fetch starts
-      const response = await axios.get('/api/get-all-posts');
+      const response = await axios.get(`/api/get-all-posts?timestamp=${new Date().getTime()}`);
       console.log(response.data.posts);
       setData(response.data.posts);
     } catch (error) {
