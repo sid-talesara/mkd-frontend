@@ -12,11 +12,12 @@ const BlogsPage = async () => {
   }
   const data = await response.json(); // Parse the JSON from the response
 
+  console.log(data);
   return (
     <>
       <BlogsHero />
       <div className="flex gap-10 justify-center py-12 max-w-screen-xl m-auto flex-wrap">
-        {data.map((post: BlogCardData) => (
+        {data?.posts.map((post: BlogCardData) => (
           <div key={post.id}>
             <BlogsCards {...post} />
           </div>
