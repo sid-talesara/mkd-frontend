@@ -14,7 +14,6 @@ export async function GET(request: NextRequest) {
         status: 200, // OK status
         headers: {
           'Content-Type': 'application/json',
-          // Disable caching for this response
           'Cache-Control': 'no-store, max-age=0',
         },
       },
