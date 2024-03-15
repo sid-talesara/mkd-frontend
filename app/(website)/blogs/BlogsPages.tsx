@@ -3,8 +3,8 @@ import BlogsCards from './BlogsCards';
 import { BlogCardData } from '@/shared/types';
 import { getAllPublished } from '../../lib/notion';
 export const dynamic = 'force-dynamic';
-export const revalidate = 20;
-const BlogsPage = async () => {
+
+const BlogsPages = async () => {
   const data = await getAllPublished();
   console.log(data);
   return (
@@ -21,4 +21,4 @@ const BlogsPage = async () => {
   );
 };
 
-export default BlogsPage;
+export default BlogsPages;
