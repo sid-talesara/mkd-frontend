@@ -3,10 +3,13 @@ import BlogsCards from './BlogsCards';
 import { BlogCardData } from '@/shared/types';
 
 const BlogsPage = async () => {
-  const response = await fetch('http://mobilekidukan.com/api/get-all-posts', { next: { revalidate: 20 } });
-  // if (!response.ok) {
-  //   throw new Error('Network response was not ok');
-  // }
+  const url = process.env.NEXT_HOST_URL || 'http://localhost:3000';
+  const response = await fetch(`${url}/api/get-all-posts`, {
+    next: { revalidate: 20 },
+  });
+  if (!response.ok) {
+    throw new Error('Network response was not ok');
+  }
   const data = await response.json(); // Parse the JSON from the response
 
   return (
