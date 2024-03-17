@@ -4,7 +4,7 @@ import './globals.css';
 import NavbarComponent from '@/components/shared/Navbar/Navbar';
 import NavbarMobileComponent from '@/components/shared/Navbar/NavbarMobile';
 import Footer from '@/components/shared/Footer/Footer';
-
+import { GoogleTagManager, GoogleAnalytics } from '@next/third-parties/google';
 const workSans = Work_Sans({ subsets: ['latin'] });
 
 // for SEO
@@ -61,7 +61,8 @@ export default function RootLayout({
         {children}
         <Footer />
       </body>{' '}
-      {/* Use Work Sans font */}
+      <GoogleTagManager gtmId="GTM-KLMDXNQ4" />
+      <GoogleAnalytics gaId="G-295541412" />
     </html>
   );
 }
