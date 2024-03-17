@@ -38,6 +38,11 @@ export default function Carousal() {
           </SwiperSlide>
           <SwiperSlide>
             <Link href={'/nearby-stores'}>
+              <Image src={'/slide6.png'} width={1500} height={10} alt="some" />
+            </Link>
+          </SwiperSlide>
+          <SwiperSlide>
+            <Link href={'/nearby-stores'}>
               <Image src={'/slide2.png'} width={1500} height={10} alt="some" />
             </Link>
           </SwiperSlide>
@@ -82,6 +87,11 @@ export default function Carousal() {
           <SwiperSlide>
             <Link href={'/nearby-stores'}>
               <Image src={'/mobile-slide2.png'} width={1500} height={10} alt="some" />
+            </Link>
+          </SwiperSlide>
+          <SwiperSlide>
+            <Link href={'/nearby-stores'}>
+              <Image src={'/mobile-slide6.png'} width={1500} height={10} alt="some" />
             </Link>
           </SwiperSlide>
 
