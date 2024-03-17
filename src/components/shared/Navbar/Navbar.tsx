@@ -99,13 +99,13 @@ const NavbarComponent = () => {
                   <p>Nearby Stores</p>
                 </Link>
               </li>
-              {/* <li>
+              <li>
                 <Link href="/blogs" className="text-base   dark:text-white hover:underline flex gap-3 items-center">
                   <GrArticle className="text-lg" />
 
                   <p>Blogs</p>
                 </Link>
-              </li> */}
+              </li>
               <li>
                 <Link href="/contact" className="text-base   dark:text-white hover:underline flex gap-3 items-center">
                   <MdOutlineMessage className="text-lg" />

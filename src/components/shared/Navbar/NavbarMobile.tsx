@@ -105,7 +105,7 @@ const NavbarMobileComponent = () => {
                       <p>Nearby Stores</p>
                     </Link>
                   </li>
-                  {/* <li>
+                  <li>
                     <Link
                       href="/blogs"
                       className="  dark:text-white hover:underline flex gap-5 items-center  hover:bg-mkd-light hover:text-mkd-dark p-2 rounded-md"
@@ -114,7 +114,7 @@ const NavbarMobileComponent = () => {
 
                       <p>Blogs</p>
                     </Link>
-                  </li> */}
+                  </li>
                   <li>
                     <Link
                       href="/contact"
