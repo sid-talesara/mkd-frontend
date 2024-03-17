@@ -45,7 +45,7 @@ const ShopCard: React.FC<Props> = ({ handleActiveMarker, markersData }) => {
           }}
         >
           {/* <div className="absolute top-2 right-2 z-10">{location.id % 2 !== 0 && <CardTags title="Top Rated" />}</div> */}
-          <p className="text-xl">{location.name}</p>
+          <p className="text-xl">{location.shop}</p>
           {location.desc !== '-' && <p className="text-sm">{trimAndEllipsis(location.desc)}</p>}
           <p className="text-sm">{trimAndEllipsis(location.address)}</p>
           {/* <p className="py-2 text-yellow-500 flex gap-1">

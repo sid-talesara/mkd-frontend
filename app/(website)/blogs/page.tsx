@@ -1,23 +1,11 @@
-import BlogsHero from './BlogsHero';
-import BlogsCards from './BlogsCards';
-import { BlogCardData } from '@/shared/types';
-import { getAllPublished } from '../../lib/notion';
+import BlogsPages from './BlogsPages';
 export const dynamic = 'force-dynamic';
 export const revalidate = 20;
 const BlogsPage = async () => {
-  const data = await getAllPublished();
-  console.log(data);
   return (
-    <>
-      <BlogsHero />
-      <div className="flex gap-10 justify-center py-12 max-w-screen-xl m-auto flex-wrap">
-        {data?.map((post: BlogCardData) => (
-          <div key={post.id}>
-            <BlogsCards {...post} />
-          </div>
-        ))}
-      </div>
-    </>
+    <div className=" max-w-screen-md mx-auto px-4 md:px-0">
+      <BlogsPages />
+    </div>
   );
 };
 
